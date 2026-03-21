@@ -1,9 +1,7 @@
-import { Check, Play, Layers, Cpu, Sparkles } from "lucide-react";
-import { useState } from "react";
+import { Check, Layers, Cpu, Sparkles } from "lucide-react";
 import { motion } from "motion/react";
 
 export function Tecnologia() {
-  const [playing, setPlaying] = useState(false);
   const features = ["Visualização 3D antes da produção","Precisão de 0.01mm","5 eixos simultâneos","Software CAD/CAM incluído","Biblioteca de designs","Suporte especializado"];
   return (
     <section id="servicos" className="py-28 bg-[#f7f8fa]">
@@ -12,21 +10,15 @@ export function Tecnologia() {
           {/* VIDEO - LEFT */}
           <motion.div className="relative order-2 lg:order-1" initial={{opacity:0,x:-40}} whileInView={{opacity:1,x:0}} viewport={{once:true}} transition={{duration:0.8}}>
             <div className="relative overflow-hidden rounded-sm" style={{aspectRatio:"16/9"}}>
-              {playing ? (
-                <iframe src="https://www.youtube.com/embed/cnc1YNbOMjM?autoplay=1&rel=0" title="Alliance em funcionamento"
-                  className="w-full h-full absolute inset-0" allow="autoplay; encrypted-media" allowFullScreen />
-              ) : (
-                <>
-                  <img src="https://img.youtube.com/vi/cnc1YNbOMjM/maxresdefault.jpg" alt="Alliance CNC" className="w-full h-full object-cover"/>
-                  <div className="absolute inset-0 bg-[#0f1419]/15 flex items-center justify-center cursor-pointer group" onClick={()=>setPlaying(true)}>
-                    <div className="w-20 h-20 flex items-center justify-center rounded-full bg-white/95 shadow-2xl group-hover:scale-110 transition-transform duration-300">
-                      <Play size={28} className="text-[#2563eb] ml-1"/>
-                    </div>
-                  </div>
-                </>
-              )}
-              <div className="absolute top-0 left-0 w-10 h-10 border-t-2 border-l-2 border-[#2563eb]/30 rounded-tl-sm pointer-events-none"/>
-              <div className="absolute bottom-0 right-0 w-10 h-10 border-b-2 border-r-2 border-[#ea580c]/30 rounded-br-sm pointer-events-none"/>
+              <iframe
+                src="https://www.youtube.com/embed/cnc1YNbOMjM?rel=0"
+                title="Alliance em funcionamento"
+                className="absolute inset-0 w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+              <div className="absolute top-0 left-0 w-10 h-10 border-t-2 border-l-2 border-[#2563eb]/30 rounded-tl-sm pointer-events-none z-10"/>
+              <div className="absolute bottom-0 right-0 w-10 h-10 border-b-2 border-r-2 border-[#ea580c]/30 rounded-br-sm pointer-events-none z-10"/>
             </div>
           </motion.div>
           {/* TEXT - RIGHT */}

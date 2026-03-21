@@ -12,11 +12,11 @@ export function Depoimentos() {
     {text:"Tecnologia nacional em padrão internacional. Qualidade incomparável. Melhor investimento que fizemos.",author:"Maria Santos",role:"CEO",co:"Bijoux Design RJ",avatar:"https://ui-avatars.com/api/?name=MS&background=ea580c&color=fff&size=80&bold=true"},
     {text:"Produtividade triplicou, qualidade melhorou muito. Nossos clientes notaram a diferença imediatamente.",author:"Carlos Mendes",role:"Gerente Industrial",co:"Acessórios Finos MG",avatar:"https://ui-avatars.com/api/?name=CM&background=2563eb&color=fff&size=80&bold=true"},
   ];
-  const settings = {dots:true,infinite:true,speed:600,slidesToShow:3,slidesToScroll:1,autoplay:true,autoplaySpeed:6000,
-    responsive:[{breakpoint:1024,settings:{slidesToShow:2}},{breakpoint:640,settings:{slidesToShow:1}}]};
+  const settings = {dots:true,infinite:true,speed:600,slidesToShow:3,slidesToScroll:1,autoplay:true,autoplaySpeed:6000,centerMode:false,
+    responsive:[{breakpoint:1024,settings:{slidesToShow:2,centerMode:false}},{breakpoint:640,settings:{slidesToShow:1,centerMode:false,arrows:false}}]};
   return (
-    <section className="py-28 bg-white">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+    <section className="py-28 bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 overflow-hidden">
         <div className="text-center mb-16">
           <motion.div className="flex items-center justify-center gap-3 mb-4" initial={{opacity:0}} whileInView={{opacity:1}} viewport={{once:true}}>
             <div className="w-8 h-[1px] bg-[#2563eb]"/><span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-[#2563eb]">Depoimentos</span><div className="w-8 h-[1px] bg-[#2563eb]"/>
