@@ -1,4 +1,5 @@
-import { Play, Clock } from "lucide-react";
+import { Play, Clock, Film } from "lucide-react";
+import { motion } from "motion/react";
 
 export function Videos() {
   const videos = [
@@ -38,9 +39,15 @@ export function Videos() {
     <section className="py-24" style={{ background: "#F8F9FA" }} id="videos">
       <div className="max-w-[1440px] mx-auto px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <div
-            className="inline-block px-4 py-2 rounded-full mb-4"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4"
             style={{
               background: "rgba(255, 107, 53, 0.1)",
               color: "#FF6B35",
@@ -50,6 +57,7 @@ export function Videos() {
               textTransform: "uppercase",
             }}
           >
+            <Film size={16} />
             VEJA EM AÇÃO
           </div>
           <h2
@@ -66,59 +74,86 @@ export function Videos() {
           <p style={{ fontSize: "18px", color: "#7F8C8D" }}>
             Assista demonstrações e casos reais de uso
           </p>
-        </div>
+        </motion.div>
 
         {/* Videos Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {videos.map((video, index) => (
-            <div
+            <motion.div
               key={index}
-              className="bg-white rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 group cursor-pointer"
-              style={{
-                boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.08)",
-              }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="group cursor-pointer"
             >
-              {/* Thumbnail */}
-              <div className="relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
-                <img
-                  src={video.thumbnail}
-                  alt={video.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
+              <motion.div
+                className="bg-white rounded-2xl overflow-hidden"
+                style={{
+                  boxShadow: "0 4px 24px rgba(0, 0, 0, 0.06)",
+                  border: '1px solid rgba(0, 0, 0, 0.04)'
+                }}
+                whileHover={{ 
+                  y: -8,
+                  boxShadow: '0 16px 48px rgba(0, 0, 0, 0.12)',
+                  borderColor: 'rgba(255, 107, 53, 0.2)'
+                }}
+              >
+                {/* Thumbnail */}
+                <div className="relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
+                  <img
+                    src={video.thumbnail}
+                    alt={video.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
 
-                {/* Overlay */}
-                <div
-                  className="absolute inset-0 flex items-center justify-center"
-                  style={{ background: "rgba(0, 0, 0, 0.3)" }}
-                >
-                  <div
-                    className="w-20 h-20 rounded-full bg-white flex items-center justify-center transition-all duration-300 group-hover:scale-110"
-                    style={{ boxShadow: "0px 8px 24px rgba(0, 0, 0, 0.2)" }}
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+
+                  {/* Duration badge */}
+                  <div className="absolute bottom-3 right-3 flex items-center gap-1 px-3 py-1.5 rounded-lg"
+                    style={{
+                      background: 'rgba(0, 0, 0, 0.75)',
+                      backdropFilter: 'blur(10px)'
+                    }}
                   >
-                    <Play size={28} style={{ color: "#FF6B35", marginLeft: "3px" }} />
+                    <Clock size={14} style={{ color: "#fff" }} />
+                    <span style={{ fontSize: "13px", color: "#fff", fontWeight: 500 }}>{video.duration}</span>
+                  </div>
+
+                  {/* Play button */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <motion.div
+                      className="w-20 h-20 rounded-full flex items-center justify-center"
+                      style={{ 
+                        background: 'rgba(255, 255, 255, 0.95)',
+                        backdropFilter: 'blur(10px)',
+                        boxShadow: "0 12px 32px rgba(0, 0, 0, 0.3)" 
+                      }}
+                      whileHover={{ scale: 1.15 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <Play size={32} style={{ color: "#FF6B35", marginLeft: "4px" }} />
+                    </motion.div>
                   </div>
                 </div>
-              </div>
 
-              {/* Info */}
-              <div className="p-5">
-                <h3
-                  className="mb-2"
-                  style={{
-                    fontSize: "16px",
-                    fontWeight: 600,
-                    color: "#0A1628",
-                    lineHeight: 1.4,
-                  }}
-                >
-                  {video.title}
-                </h3>
-                <div className="flex items-center gap-2">
-                  <Clock size={14} style={{ color: "#7F8C8D" }} />
-                  <span style={{ fontSize: "14px", color: "#7F8C8D" }}>{video.duration}</span>
+                {/* Info */}
+                <div className="p-6">
+                  <h3
+                    className="mb-2"
+                    style={{
+                      fontSize: "17px",
+                      fontWeight: 600,
+                      color: "#0A1628",
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    {video.title}
+                  </h3>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           ))}
         </div>
       </div>

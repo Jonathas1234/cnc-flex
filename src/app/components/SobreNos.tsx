@@ -117,67 +117,89 @@ export function SobreNos() {
               NOSSA HISTÓRIA
             </div>
 
-            <h2
+            <motion.h2
               className="mb-6"
               style={{
-                fontSize: "clamp(32px, 4vw, 48px)",
-                fontWeight: 700,
+                fontSize: "clamp(36px, 5vw, 56px)",
+                fontWeight: 800,
                 color: "white",
-                lineHeight: 1.2,
+                lineHeight: 1.1,
+                letterSpacing: '-0.03em'
               }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
             >
               Há mais de 20 anos no mercado
-            </h2>
+            </motion.h2>
 
-            <p
-              className="mb-10"
+            <motion.p
+              className="mb-12"
               style={{
-                fontSize: "18px",
-                color: "rgba(255, 255, 255, 0.8)",
-                lineHeight: 1.6,
+                fontSize: "19px",
+                color: "rgba(255, 255, 255, 0.75)",
+                lineHeight: 1.7,
               }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
             >
               A CNC Flex foi criada para modernizar e trazer soluções inovadoras para o mercado
               de usinagem brasileiro. Desenvolvemos equipamentos de fresagem de alta precisão com
               tecnologia nacional e padrão internacional.
-            </p>
+            </motion.p>
 
             {/* Stats Grid */}
-            <div className="grid grid-cols-2 gap-6 mb-10">
+            <div className="grid grid-cols-2 gap-5 mb-12">
               {stats.map((stat, index) => (
                 <motion.div
                   key={index}
-                  className="p-6 rounded-2xl text-center"
+                  className="group p-7 rounded-2xl text-center cursor-pointer"
                   style={{
-                    background: "rgba(255, 255, 255, 0.1)",
-                    backdropFilter: "blur(10px)",
+                    background: "rgba(255, 255, 255, 0.06)",
+                    backdropFilter: "blur(20px)",
                     border: "1px solid rgba(255, 255, 255, 0.1)",
+                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)'
                   }}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  transition={{ delay: index * 0.1, duration: 0.5, type: "spring" }}
                   whileHover={{ 
-                    y: -5, 
-                    background: "rgba(255, 107, 53, 0.15)",
+                    y: -8, 
+                    scale: 1.05,
+                    background: "rgba(255, 107, 53, 0.12)",
                     borderColor: "rgba(255, 107, 53, 0.3)",
-                    transition: { duration: 0.2 }
+                    boxShadow: '0 16px 48px rgba(255, 107, 53, 0.2)'
                   }}
                 >
                   <motion.div 
-                    style={{ fontSize: "36px", fontWeight: 700, color: "#FF6B35" }}
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
+                    style={{ 
+                      fontSize: "48px", 
+                      fontWeight: 800, 
+                      color: "#FF6B35",
+                      letterSpacing: '-0.02em',
+                      marginBottom: '8px'
+                    }}
+                    initial={{ scale: 0, rotate: -180 }}
+                    whileInView={{ scale: 1, rotate: 0 }}
                     viewport={{ once: true }}
                     transition={{ 
                       delay: index * 0.1 + 0.3, 
                       type: "spring", 
-                      stiffness: 200 
+                      stiffness: 200,
+                      damping: 15
                     }}
                   >
                     {stat.number}
                   </motion.div>
-                  <div style={{ fontSize: "14px", color: "rgba(255, 255, 255, 0.8)" }}>
+                  <div style={{ 
+                    fontSize: "15px", 
+                    color: "rgba(255, 255, 255, 0.7)",
+                    fontWeight: 500
+                  }}>
                     {stat.label}
                   </div>
                 </motion.div>
@@ -185,18 +207,28 @@ export function SobreNos() {
             </div>
 
             {/* CTA Button */}
-            <button
-              className="px-8 py-4 rounded-xl transition-all duration-300 hover:-translate-y-1"
+            <motion.button
+              className="group px-10 py-5 rounded-2xl relative overflow-hidden"
               style={{
                 background: "linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%)",
                 color: "white",
                 fontSize: "16px",
                 fontWeight: 600,
-                boxShadow: "0px 8px 20px rgba(255, 107, 53, 0.3)",
+                boxShadow: "0 12px 32px rgba(255, 107, 53, 0.3)",
               }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6 }}
+              whileHover={{ 
+                y: -4,
+                boxShadow: "0 20px 48px rgba(255, 107, 53, 0.4)"
+              }}
+              whileTap={{ scale: 0.98 }}
             >
-              Conheça Nossa História Completa
-            </button>
+              <span className="relative z-10">Conheça Nossa História Completa</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-[#FF8C42] to-[#FFB380] opacity-0 group-hover:opacity-100 transition-opacity" />
+            </motion.button>
           </div>
         </div>
       </div>

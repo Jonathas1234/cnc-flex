@@ -1,4 +1,5 @@
 import { MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
+import { motion } from "motion/react";
 
 export function Localizacao() {
   return (
@@ -6,12 +7,19 @@ export function Localizacao() {
       <div className="max-w-[1440px] mx-auto px-8">
         <div className="grid lg:grid-cols-[60%_40%] gap-12">
           {/* Left Column - Map */}
-          <div className="relative">
+          <motion.div 
+            className="relative"
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <div
               className="w-full rounded-3xl overflow-hidden"
               style={{
                 height: "500px",
-                boxShadow: "0px 8px 24px rgba(0, 0, 0, 0.1)",
+                boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
+                border: '1px solid rgba(0, 0, 0, 0.04)'
               }}
             >
               <iframe
@@ -24,10 +32,15 @@ export function Localizacao() {
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column - Info */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <h2
               className="mb-10"
               style={{
@@ -43,11 +56,17 @@ export function Localizacao() {
             {/* Info Cards */}
             <div className="space-y-4 mb-8">
               {/* Address */}
-              <div
+              <motion.div
                 className="p-6 rounded-2xl"
                 style={{
-                  background: "#F8F9FA",
-                  border: "1px solid #E8EAED",
+                  background: "rgba(248, 249, 250, 0.8)",
+                  backdropFilter: 'blur(10px)',
+                  border: "1px solid rgba(0, 0, 0, 0.06)",
+                }}
+                whileHover={{ 
+                  y: -4,
+                  boxShadow: "0 12px 32px rgba(0, 0, 0, 0.08)",
+                  borderColor: 'rgba(255, 107, 53, 0.2)'
                 }}
               >
                 <div className="flex items-start gap-4">
@@ -71,14 +90,21 @@ export function Localizacao() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Phone */}
-              <div
-                className="p-6 rounded-2xl"
+              <motion.a
+                href="tel:+551139510270"
+                className="block p-6 rounded-2xl"
                 style={{
-                  background: "#F8F9FA",
-                  border: "1px solid #E8EAED",
+                  background: "rgba(248, 249, 250, 0.8)",
+                  backdropFilter: 'blur(10px)',
+                  border: "1px solid rgba(0, 0, 0, 0.06)",
+                }}
+                whileHover={{ 
+                  y: -4,
+                  boxShadow: "0 12px 32px rgba(0, 0, 0, 0.08)",
+                  borderColor: 'rgba(255, 107, 53, 0.2)'
                 }}
               >
                 <div className="flex items-start gap-4">
@@ -101,14 +127,21 @@ export function Localizacao() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.a>
 
               {/* Email */}
-              <div
-                className="p-6 rounded-2xl"
+              <motion.a
+                href="mailto:contato@cncflex.com.br"
+                className="block p-6 rounded-2xl"
                 style={{
-                  background: "#F8F9FA",
-                  border: "1px solid #E8EAED",
+                  background: "rgba(248, 249, 250, 0.8)",
+                  backdropFilter: 'blur(10px)',
+                  border: "1px solid rgba(0, 0, 0, 0.06)",
+                }}
+                whileHover={{ 
+                  y: -4,
+                  boxShadow: "0 12px 32px rgba(0, 0, 0, 0.08)",
+                  borderColor: 'rgba(255, 107, 53, 0.2)'
                 }}
               >
                 <div className="flex items-start gap-4">
@@ -130,14 +163,20 @@ export function Localizacao() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.a>
 
               {/* Hours */}
-              <div
+              <motion.div
                 className="p-6 rounded-2xl"
                 style={{
-                  background: "#F8F9FA",
-                  border: "1px solid #E8EAED",
+                  background: "rgba(248, 249, 250, 0.8)",
+                  backdropFilter: 'blur(10px)',
+                  border: "1px solid rgba(0, 0, 0, 0.06)",
+                }}
+                whileHover={{ 
+                  y: -4,
+                  boxShadow: "0 12px 32px rgba(0, 0, 0, 0.08)",
+                  borderColor: 'rgba(255, 107, 53, 0.2)'
                 }}
               >
                 <div className="flex items-start gap-4">
@@ -160,27 +199,32 @@ export function Localizacao() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
 
             {/* WhatsApp Button */}
-            <a
+            <motion.a
               href="https://wa.me/5511938023558?text=Olá!%20Gostaria%20de%20falar%20com%20um%20especialista"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-5 rounded-2xl flex items-center justify-center gap-3 transition-all duration-300 hover:-translate-y-1"
+              className="block w-full py-5 rounded-2xl flex items-center justify-center gap-3"
               style={{
-                background: "#25D366",
+                background: "linear-gradient(135deg, #25D366 0%, #128C7E 100%)",
                 color: "white",
                 fontSize: "16px",
                 fontWeight: 600,
-                boxShadow: "0px 8px 24px rgba(37, 211, 102, 0.3)",
+                boxShadow: "0 8px 24px rgba(37, 211, 102, 0.3)",
               }}
+              whileHover={{ 
+                y: -4,
+                boxShadow: "0 16px 40px rgba(37, 211, 102, 0.4)",
+              }}
+              whileTap={{ scale: 0.98 }}
             >
               <MessageCircle size={24} />
               Falar com Especialista
-            </a>
-          </div>
+            </motion.a>
+          </motion.div>
         </div>
       </div>
     </section>

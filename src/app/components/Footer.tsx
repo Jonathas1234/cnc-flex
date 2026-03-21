@@ -1,32 +1,54 @@
 import { Facebook, Instagram, Youtube, Linkedin, MapPin, Phone, Mail } from "lucide-react";
+import { motion } from "motion/react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative" style={{ background: "linear-gradient(180deg, #0A1628 0%, #000814 100%)" }}>
+    <footer className="relative overflow-hidden">
+      {/* Premium gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0A1628] via-[#1a2b4a] to-[#000814]" />
+      
+      {/* Subtle pattern */}
+      <div 
+        className="absolute inset-0 opacity-[0.02]"
+        style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
+          backgroundSize: '40px 40px'
+        }}
+      />
+      
       {/* Decorative Top Border */}
       <div className="h-1 bg-gradient-to-r from-transparent via-[#FF6B35] to-transparent" />
       
-      <div className="max-w-7xl mx-auto px-6 md:px-8 py-24">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 py-24 relative z-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Column 1 - Logo & Description */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <div className="mb-6">
-              <div className="text-2xl tracking-tight" style={{ fontWeight: 700 }}>
+              <div className="text-3xl tracking-tight" style={{ fontWeight: 800 }}>
                 <span style={{ color: "white" }}>CNC</span>
-                <span style={{ color: "#FF6B35" }}>Flex</span>
+                <span style={{ 
+                  background: 'linear-gradient(135deg, #FF6B35, #FF8C42)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                }}>Flex</span>
               </div>
             </div>
             <p
               className="mb-8"
               style={{
-                fontSize: "14px",
-                color: "rgba(255, 255, 255, 0.7)",
-                lineHeight: 1.6,
+                fontSize: "15px",
+                color: "rgba(255, 255, 255, 0.65)",
+                lineHeight: 1.7,
               }}
             >
-              Há mais de 20 anos desenvolvendo soluções em usinagem de precisão.
+              Há mais de 20 anos desenvolvendo soluções em usinagem de precisão com tecnologia nacional.
             </p>
 
             {/* Social Media */}
@@ -37,20 +59,27 @@ export function Footer() {
                 { icon: Youtube, href: "#" },
                 { icon: Linkedin, href: "#" },
               ].map((social, index) => (
-                <a
+                <motion.a
                   key={index}
                   href={social.href}
-                  className="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:bg-[#FF6B35] group"
+                  className="w-12 h-12 rounded-xl flex items-center justify-center group"
                   style={{
-                    background: "rgba(255, 255, 255, 0.08)",
+                    background: "rgba(255, 255, 255, 0.05)",
                     border: "1px solid rgba(255, 255, 255, 0.1)",
                   }}
+                  whileHover={{ 
+                    y: -4,
+                    background: "linear-gradient(135deg, #FF6B35, #FF8C42)",
+                    borderColor: "transparent",
+                    boxShadow: "0 12px 32px rgba(255, 107, 53, 0.3)"
+                  }}
+                  transition={{ duration: 0.3 }}
                 >
-                  <social.icon size={20} className="text-white/70 group-hover:text-white transition-colors" />
-                </a>
+                  <social.icon size={20} className="text-white/60 group-hover:text-white transition-colors" />
+                </motion.a>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Column 2 - Links Rápidos */}
           <div>

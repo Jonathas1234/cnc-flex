@@ -123,147 +123,219 @@ export function Equipamentos() {
 
   return (
     <section
-      className="py-28"
+      className="py-32 relative overflow-hidden"
       id="produtos"
-      style={{
-        background: "linear-gradient(180deg, #F8F9FA 0%, #FFFFFF 50%, #F8F9FA 100%)",
-      }}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-8">
+      {/* Elegant gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-gray-50" />
+      
+      {/* Subtle grid pattern */}
+      <div 
+        className="absolute inset-0 opacity-[0.02]"
+        style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, #0A1628 1px, transparent 0)`,
+          backgroundSize: '40px 40px'
+        }}
+      />
+
+      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         {/* Header */}
-        <div className="text-center mb-12">
-          <div
-            className="inline-block px-4 py-2 rounded-full mb-4"
+        <div className="text-center mb-16">
+          <motion.div
+            className="inline-block px-5 py-2.5 rounded-full mb-6"
             style={{
-              background: "rgba(255, 107, 53, 0.1)",
+              background: "linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(255, 140, 66, 0.1))",
+              border: '1px solid rgba(255, 107, 53, 0.2)',
+            }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <span style={{
               color: "#FF6B35",
               fontSize: "12px",
               fontWeight: 700,
               letterSpacing: "0.5px",
               textTransform: "uppercase",
-            }}
-          >
-            NOSSOS PRODUTOS
-          </div>
-          <h2
-            className="mb-4"
+            }}>
+              NOSSOS PRODUTOS
+            </span>
+          </motion.div>
+          
+          <motion.h2
+            className="mb-5"
             style={{
-              fontSize: "clamp(32px, 4vw, 48px)",
-              fontWeight: 700,
+              fontSize: "clamp(36px, 5vw, 56px)",
+              fontWeight: 800,
               color: "#0A1628",
-              lineHeight: 1.2,
+              lineHeight: 1.1,
+              letterSpacing: '-0.03em'
             }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
             Máquinas de Alta Precisão
-          </h2>
-          <p style={{ fontSize: "18px", color: "#7F8C8D" }}>
-            Equipamentos para todas as necessidades de usinagem
-          </p>
+          </motion.h2>
+          <motion.p 
+            style={{ fontSize: "19px", color: "#7F8C8D", maxWidth: "600px", margin: "0 auto", lineHeight: 1.6 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Equipamentos para todas as necessidades de usinagem com tecnologia de ponta
+          </motion.p>
         </div>
 
         {/* Filters */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        <motion.div 
+          className="flex flex-wrap justify-center gap-3 mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
           {filters.map((filter) => (
             <button
               key={filter}
               onClick={() => setActiveFilter(filter)}
-              className="px-6 py-3 rounded-full transition-all duration-300"
+              className="px-7 py-3.5 rounded-full transition-all duration-300 relative overflow-hidden"
               style={{
                 background:
                   activeFilter === filter
                     ? "linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%)"
-                    : "white",
+                    : "rgba(255, 255, 255, 0.8)",
                 color: activeFilter === filter ? "white" : "#2C3E50",
-                border: activeFilter === filter ? "none" : "1px solid #E8EAED",
+                border: activeFilter === filter ? "none" : "1.5px solid rgba(0, 0, 0, 0.08)",
                 fontSize: "14px",
                 fontWeight: 600,
+                boxShadow: activeFilter === filter 
+                  ? "0 8px 24px rgba(255, 107, 53, 0.25)" 
+                  : "0 2px 8px rgba(0, 0, 0, 0.04)",
               }}
             >
               {filter}
             </button>
           ))}
-        </div>
+        </motion.div>
 
         {/* Products Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProdutos.map((produto, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-3xl overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl group"
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="group relative bg-white rounded-3xl overflow-hidden cursor-pointer"
               style={{
-                boxShadow: "0px 8px 24px rgba(0, 0, 0, 0.06)",
-                border: "1px solid rgba(255, 107, 53, 0.08)",
+                boxShadow: "0 4px 24px rgba(0, 0, 0, 0.06)",
+                border: "1px solid rgba(0, 0, 0, 0.04)",
               }}
+              whileHover={{ y: -8, scale: 1.01 }}
             >
+              {/* Gradient overlay on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#FF6B35]/5 to-[#FF8C42]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none" />
+              
               {/* Image Container */}
-              <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50">
+              <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
                 <img
                   src={produto.image}
                   alt={produto.name}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                {/* Overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/80 via-[#0A1628]/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                
+                {/* Dark gradient overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/90 via-[#0A1628]/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
                 
                 {/* Quick View Button */}
-                <button className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <span className="px-6 py-3 bg-white/95 backdrop-blur-sm rounded-xl font-semibold text-[#0A1628] hover:bg-white transition-all duration-300">
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 z-20">
+                  <motion.button 
+                    className="px-8 py-4 rounded-2xl font-semibold text-[15px] shadow-2xl"
+                    style={{
+                      background: 'rgba(255, 255, 255, 0.95)',
+                      backdropFilter: 'blur(10px)',
+                      color: '#0A1628'
+                    }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
                     Visualização Rápida
-                  </span>
-                </button>
+                  </motion.button>
+                </div>
                 
                 {/* Badge */}
                 {produto.badge && (
-                  <div
-                    className="absolute top-4 right-4 px-4 py-2 rounded-xl backdrop-blur-md font-bold text-[11px] uppercase tracking-wide shadow-lg"
+                  <motion.div
+                    className="absolute top-5 right-5 px-4 py-2 rounded-xl font-bold text-[11px] uppercase tracking-wide"
                     style={{
                       background: produto.badgeColor,
                       color: "white",
+                      boxShadow: '0 8px 24px rgba(0, 0, 0, 0.2)',
+                      backdropFilter: 'blur(10px)'
                     }}
+                    initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+                    whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2 + index * 0.1, type: "spring" }}
                   >
                     {produto.badge}
-                  </div>
+                  </motion.div>
                 )}
               </div>
 
               {/* Content */}
-              <div className="p-8">
+              <div className="p-8 relative z-20">
                 <h3
                   className="mb-3 transition-colors duration-300 group-hover:text-[#FF6B35]"
                   style={{
-                    fontSize: "26px",
+                    fontSize: "28px",
                     fontWeight: 700,
                     color: "#0A1628",
+                    letterSpacing: '-0.02em'
                   }}
                 >
                   {produto.name}
                 </h3>
                 <p
-                  className="mb-6"
+                  className="mb-7"
                   style={{
                     fontSize: "15px",
                     color: "#7F8C8D",
-                    lineHeight: 1.6,
+                    lineHeight: 1.7,
                   }}
                 >
                   {produto.description}
                 </p>
 
                 {/* Specs */}
-                <div className="space-y-3 mb-8">
+                <div className="space-y-3.5 mb-8">
                   {produto.specs.map((spec, i) => (
-                    <div key={i} className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-[#FF6B35]/10 flex items-center justify-center flex-shrink-0">
+                    <motion.div 
+                      key={i} 
+                      className="flex items-center gap-3"
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.3 + i * 0.1 }}
+                    >
+                      <div 
+                        className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform"
+                        style={{
+                          background: 'linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(255, 140, 66, 0.1))',
+                          border: '1px solid rgba(255, 107, 53, 0.2)'
+                        }}
+                      >
                         {i === 0 && <Zap size={16} style={{ color: "#FF6B35" }} />}
                         {i === 1 && <Ruler size={16} style={{ color: "#FF6B35" }} />}
                         {i === 2 && <Settings size={16} style={{ color: "#FF6B35" }} />}
                       </div>
                       <span style={{ fontSize: "14px", color: "#2C3E50", fontWeight: 500 }}>{spec}</span>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
 
@@ -271,7 +343,7 @@ export function Equipamentos() {
                 <div className="flex gap-3">
                   <button
                     onClick={() => setSelectedProduct(produto)}
-                    className="flex-1 py-3.5 rounded-xl border-2 transition-all duration-300 font-semibold group/btn"
+                    className="flex-1 py-4 rounded-xl border-2 transition-all duration-300 font-semibold relative overflow-hidden group/btn"
                     style={{
                       borderColor: "#FF6B35",
                       color: "#FF6B35",
@@ -281,10 +353,14 @@ export function Equipamentos() {
                     onMouseEnter={(e) => {
                       e.currentTarget.style.backgroundColor = "#FF6B35";
                       e.currentTarget.style.color = "white";
+                      e.currentTarget.style.transform = "translateY(-2px)";
+                      e.currentTarget.style.boxShadow = "0 12px 28px rgba(255, 107, 53, 0.3)";
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.backgroundColor = "transparent";
                       e.currentTarget.style.color = "#FF6B35";
+                      e.currentTarget.style.transform = "translateY(0)";
+                      e.currentTarget.style.boxShadow = "none";
                     }}
                   >
                     Ver Detalhes
@@ -293,12 +369,18 @@ export function Equipamentos() {
                     href={`https://wa.me/5511938023558?text=${encodeURIComponent(`Olá! Gostaria de solicitar um orçamento para a máquina ${produto.name}`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 py-3.5 rounded-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-xl text-center font-semibold"
+                    className="flex-1 py-4 rounded-xl transition-all duration-300 text-center font-semibold hover:-translate-y-1"
                     style={{
                       background: "linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%)",
                       color: "white",
                       fontSize: "14px",
-                      boxShadow: "0px 4px 12px rgba(255, 107, 53, 0.3)",
+                      boxShadow: "0 8px 24px rgba(255, 107, 53, 0.25)",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.boxShadow = "0 16px 40px rgba(255, 107, 53, 0.35)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.boxShadow = "0 8px 24px rgba(255, 107, 53, 0.25)";
                     }}
                   >
                     Solicitar
