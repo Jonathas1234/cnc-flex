@@ -1,8 +1,8 @@
 @import './fonts.css';
 @import './tailwind.css';
 @import './theme.css';
-.slick-dots { bottom: -40px !important; }
-.slick-dots li button:before { color: #2563eb !important; font-size: 10px !important; }
-.slick-dots li.slick-active button:before { color: #2563eb !important; opacity: 1 !important; }
-html { scroll-behavior: smooth; }
-section[id] { scroll-margin-top: 80px; }
+.slick-dots{bottom:-40px !important}
+.slick-dots li button:before{color:#0A3C6E !important;font-size:10px !important}
+.slick-dots li.slick-active button:before{color:#0A3C6E !important;opacity:1 !important}
+html{scroll-behavior:smooth}
+section[id]{scroll-margin-top:80px}

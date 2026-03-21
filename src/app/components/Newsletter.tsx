@@ -1,25 +1,45 @@
-import { Mail } from "lucide-react";
+import { Mail, Check } from "lucide-react";
+import { useState } from "react";
 import { motion } from "motion/react";
-
 export function Newsletter() {
+  const [email, setEmail] = useState("");
+  const [sent, setSent] = useState(false);
+  const handleSubmit = () => {
+    if (email && email.includes("@") && email.includes(".")) {
+      setSent(true);
+      setTimeout(() => setSent(false), 4000);
+      setEmail("");
+    }
+  };
   return (
-    <section className="py-24 bg-[#f7f8fa] relative overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[250px] bg-[#2563eb] opacity-[0.03] blur-[100px] rounded-full"/>
+    <section className="py-24 relative overflow-hidden" style={{background:"linear-gradient(135deg, #F38104 0%, #e06f00 40%, #c85f00 100%)"}}>
+      <div className="absolute inset-0 opacity-[0.03]" style={{backgroundImage:"radial-gradient(circle at 1px 1px, white 1px, transparent 0)",backgroundSize:"32px 32px"}} />
       <div className="max-w-2xl mx-auto px-5 sm:px-8 relative z-10 text-center">
         <motion.div className="flex items-center justify-center gap-3 mb-4" initial={{opacity:0}} whileInView={{opacity:1}} viewport={{once:true}}>
-          <div className="w-8 h-[1px] bg-[#2563eb]"/><span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-[#2563eb]">Newsletter</span><div className="w-8 h-[1px] bg-[#2563eb]"/>
+          <div className="w-8 h-[1px] bg-white/50"/><span className="text-[12px] font-semibold tracking-[0.2em] uppercase text-white/80">Newsletter</span><div className="w-8 h-[1px] bg-white/50"/>
         </motion.div>
-        <motion.h2 className="text-3xl sm:text-4xl font-bold text-[#0f1419] mb-4" style={{letterSpacing:"-0.04em"}} initial={{opacity:0,y:15}} whileInView={{opacity:1,y:0}} viewport={{once:true}}>
-          Fique por dentro das <span className="text-[#ea580c]">novidades</span>
+        <motion.h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-5" style={{letterSpacing:"-0.04em"}} initial={{opacity:0,y:15}} whileInView={{opacity:1,y:0}} viewport={{once:true}}>
+          Fique por dentro das novidades
         </motion.h2>
-        <motion.p className="text-[15px] text-[#0f1419]/50 mb-10 font-light" initial={{opacity:0}} whileInView={{opacity:1}} viewport={{once:true}}>Dicas, tutoriais e lançamentos no seu e-mail</motion.p>
-        <motion.div className="flex flex-col sm:flex-row border border-[#0f1419]/[0.06] overflow-hidden rounded-sm" initial={{opacity:0,y:15}} whileInView={{opacity:1,y:0}} viewport={{once:true}}>
-          <div className="flex-1 flex items-center gap-3 px-5 bg-white">
-            <Mail size={15} className="text-[#2563eb]/40"/><input type="email" placeholder="Seu melhor e-mail" className="flex-1 py-4 bg-transparent border-none outline-none placeholder:text-[#0f1419]/15 text-[#0f1419]/60 text-[13px] font-light"/>
-          </div>
-          <button className="px-8 py-4 text-[11px] font-bold tracking-[0.12em] uppercase bg-[#ea580c] text-white hover:bg-[#dc4f07] transition-all shrink-0">Cadastrar</button>
-        </motion.div>
-        <p className="mt-3 text-[11px] text-[#0f1419]/15 font-light">Sem spam. Cancele quando quiser.</p>
+        <motion.p className="text-[16px] text-white/80 mb-10 font-light" initial={{opacity:0}} whileInView={{opacity:1}} viewport={{once:true}}>Dicas, tutoriais e lançamentos no seu e-mail</motion.p>
+        {sent ? (
+          <motion.div className="flex items-center justify-center gap-3 py-5 bg-white/20 backdrop-blur-sm rounded-sm"
+            initial={{opacity:0,scale:0.95}} animate={{opacity:1,scale:1}}>
+            <Check size={20} className="text-white" />
+            <span className="text-[15px] font-semibold text-white">E-mail cadastrado com sucesso!</span>
+          </motion.div>
+        ) : (
+          <motion.div className="flex flex-col sm:flex-row overflow-hidden rounded-sm shadow-xl" initial={{opacity:0,y:15}} whileInView={{opacity:1,y:0}} viewport={{once:true}}>
+            <div className="flex-1 flex items-center gap-3 px-5 bg-white">
+              <Mail size={16} className="text-[#0A3C6E]/40"/>
+              <input type="email" placeholder="Seu melhor e-mail" value={email} onChange={(e)=>setEmail(e.target.value)}
+                onKeyDown={(e)=>{if(e.key==="Enter") handleSubmit()}}
+                className="flex-1 py-4 bg-transparent border-none outline-none placeholder:text-[#0f1419]/30 text-[#0f1419] text-[15px] font-light"/>
+            </div>
+            <button onClick={handleSubmit} className="px-8 py-4 text-[12px] font-bold tracking-[0.12em] uppercase bg-[#0A3C6E] text-white hover:brightness-125 transition-all shrink-0 cursor-pointer">Cadastrar</button>
+          </motion.div>
+        )}
+        <p className="mt-4 text-[12px] text-white/60 font-light">Sem spam. Cancele quando quiser.</p>
       </div>
     </section>
   );
