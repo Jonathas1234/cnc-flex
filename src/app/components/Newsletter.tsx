@@ -1,122 +1,25 @@
-import { Mail, Sparkles } from "lucide-react";
+import { Mail } from "lucide-react";
 import { motion } from "motion/react";
 
 export function Newsletter() {
   return (
-    <section
-      className="py-28 relative overflow-hidden"
-    >
-      {/* Premium gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#FF6B35] via-[#FF8C42] to-[#FFB380]" />
-      
-      {/* Animated patterns */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-white blur-[100px] rounded-full" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#FF6B35] blur-[100px] rounded-full" />
-      </div>
-
-      <div className="max-w-4xl mx-auto px-8 relative z-10">
-        <div className="text-center">
-          <motion.div
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full mb-6"
-            style={{
-              background: 'rgba(255, 255, 255, 0.2)',
-              backdropFilter: 'blur(10px)',
-              border: '1px solid rgba(255, 255, 255, 0.3)'
-            }}
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-          >
-            <Sparkles className="w-4 h-4 text-white" />
-            <span className="text-white text-sm font-semibold">Newsletter Exclusiva</span>
-          </motion.div>
-
-          <motion.h2
-            className="mb-5"
-            style={{
-              fontSize: "clamp(32px, 4vw, 48px)",
-              fontWeight: 800,
-              color: "white",
-              lineHeight: 1.1,
-              letterSpacing: '-0.02em'
-            }}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-          >
-            Fique Por Dentro das Novidades
-          </motion.h2>
-          <motion.p
-            className="mb-12"
-            style={{
-              fontSize: "19px",
-              color: "rgba(255, 255, 255, 0.9)",
-              lineHeight: 1.6,
-            }}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
-            Receba dicas, tutoriais e lançamentos diretamente no seu e-mail
-          </motion.p>
-
-          {/* Email Form */}
-          <motion.div 
-            className="max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-          >
-            <div
-              className="flex flex-col sm:flex-row gap-3 p-2 rounded-2xl"
-              style={{
-                background: 'rgba(255, 255, 255, 0.95)',
-                backdropFilter: 'blur(20px)',
-                boxShadow: "0 24px 64px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3)",
-              }}
-            >
-              <div className="flex-1 flex items-center gap-3 px-5">
-                <Mail size={20} style={{ color: "#FF6B35" }} />
-                <input
-                  type="email"
-                  placeholder="Seu melhor e-mail"
-                  className="flex-1 py-4 bg-transparent border-none outline-none placeholder:text-gray-400"
-                  style={{
-                    fontSize: "16px",
-                    color: "#2C3E50",
-                  }}
-                />
-              </div>
-              <button
-                className="group px-10 py-4 rounded-xl transition-all duration-300 hover:scale-105 relative overflow-hidden"
-                style={{
-                  background: "linear-gradient(135deg, #0A1628, #1a2b4a)",
-                  color: "white",
-                  fontSize: "16px",
-                  fontWeight: 600,
-                  boxShadow: '0 8px 24px rgba(10, 22, 40, 0.3)'
-                }}
-              >
-                <span className="relative z-10">Cadastrar</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-[#1a2b4a] to-[#0A1628] opacity-0 group-hover:opacity-100 transition-opacity" />
-              </button>
-            </div>
-
-            <p
-              className="mt-5"
-              style={{
-                fontSize: "14px",
-                color: "rgba(255, 255, 255, 0.85)",
-              }}
-            >
-              🔒 Sem spam. Cancele quando quiser.
-            </p>
-          </motion.div>
-        </div>
+    <section className="py-24 bg-[#f7f8fa] relative overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[250px] bg-[#2563eb] opacity-[0.03] blur-[100px] rounded-full"/>
+      <div className="max-w-2xl mx-auto px-5 sm:px-8 relative z-10 text-center">
+        <motion.div className="flex items-center justify-center gap-3 mb-4" initial={{opacity:0}} whileInView={{opacity:1}} viewport={{once:true}}>
+          <div className="w-8 h-[1px] bg-[#2563eb]"/><span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-[#2563eb]">Newsletter</span><div className="w-8 h-[1px] bg-[#2563eb]"/>
+        </motion.div>
+        <motion.h2 className="text-3xl sm:text-4xl font-bold text-[#0f1419] mb-4" style={{letterSpacing:"-0.04em"}} initial={{opacity:0,y:15}} whileInView={{opacity:1,y:0}} viewport={{once:true}}>
+          Fique por dentro das <span className="text-[#ea580c]">novidades</span>
+        </motion.h2>
+        <motion.p className="text-[15px] text-[#0f1419]/50 mb-10 font-light" initial={{opacity:0}} whileInView={{opacity:1}} viewport={{once:true}}>Dicas, tutoriais e lançamentos no seu e-mail</motion.p>
+        <motion.div className="flex flex-col sm:flex-row border border-[#0f1419]/[0.06] overflow-hidden rounded-sm" initial={{opacity:0,y:15}} whileInView={{opacity:1,y:0}} viewport={{once:true}}>
+          <div className="flex-1 flex items-center gap-3 px-5 bg-white">
+            <Mail size={15} className="text-[#2563eb]/40"/><input type="email" placeholder="Seu melhor e-mail" className="flex-1 py-4 bg-transparent border-none outline-none placeholder:text-[#0f1419]/15 text-[#0f1419]/60 text-[13px] font-light"/>
+          </div>
+          <button className="px-8 py-4 text-[11px] font-bold tracking-[0.12em] uppercase bg-[#ea580c] text-white hover:bg-[#dc4f07] transition-all shrink-0">Cadastrar</button>
+        </motion.div>
+        <p className="mt-3 text-[11px] text-[#0f1419]/15 font-light">Sem spam. Cancele quando quiser.</p>
       </div>
     </section>
   );

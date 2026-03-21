@@ -2,216 +2,42 @@ import { Facebook, Instagram, Youtube, Linkedin, MapPin, Phone, Mail } from "luc
 import { motion } from "motion/react";
 
 export function Footer() {
-  const currentYear = new Date().getFullYear();
-
+  const yr = new Date().getFullYear();
   return (
-    <footer className="relative overflow-hidden">
-      {/* Premium gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0A1628] via-[#1a2b4a] to-[#000814]" />
-      
-      {/* Subtle pattern */}
-      <div 
-        className="absolute inset-0 opacity-[0.02]"
-        style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
-          backgroundSize: '40px 40px'
-        }}
-      />
-      
-      {/* Decorative Top Border */}
-      <div className="h-1 bg-gradient-to-r from-transparent via-[#FF6B35] to-transparent" />
-      
-      <div className="max-w-7xl mx-auto px-6 md:px-8 py-24 relative z-10">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          {/* Column 1 - Logo & Description */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="mb-6">
-              <div className="text-3xl tracking-tight" style={{ fontWeight: 800 }}>
-                <span style={{ color: "white" }}>CNC</span>
-                <span style={{ 
-                  background: 'linear-gradient(135deg, #FF6B35, #FF8C42)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                }}>Flex</span>
-              </div>
-            </div>
-            <p
-              className="mb-8"
-              style={{
-                fontSize: "15px",
-                color: "rgba(255, 255, 255, 0.65)",
-                lineHeight: 1.7,
-              }}
-            >
-              Há mais de 20 anos desenvolvendo soluções em usinagem de precisão com tecnologia nacional.
-            </p>
-
-            {/* Social Media */}
-            <div className="flex gap-3">
-              {[
-                { icon: Facebook, href: "#" },
-                { icon: Instagram, href: "#" },
-                { icon: Youtube, href: "#" },
-                { icon: Linkedin, href: "#" },
-              ].map((social, index) => (
-                <motion.a
-                  key={index}
-                  href={social.href}
-                  className="w-12 h-12 rounded-xl flex items-center justify-center group"
-                  style={{
-                    background: "rgba(255, 255, 255, 0.05)",
-                    border: "1px solid rgba(255, 255, 255, 0.1)",
-                  }}
-                  whileHover={{ 
-                    y: -4,
-                    background: "linear-gradient(135deg, #FF6B35, #FF8C42)",
-                    borderColor: "transparent",
-                    boxShadow: "0 12px 32px rgba(255, 107, 53, 0.3)"
-                  }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <social.icon size={20} className="text-white/60 group-hover:text-white transition-colors" />
-                </motion.a>
+    <footer className="bg-[#0f1419]">
+      <div className="h-[2px] bg-gradient-to-r from-[#2563eb] via-[#ea580c] to-[#2563eb]"/>
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 py-16">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
+          <div>
+            <div className="text-xl font-bold mb-5"><img src="/logo-cncflex.png" alt="CNC Flex" className="h-10 w-auto brightness-0 invert" /></div>
+            <p className="text-[13px] text-white/45 leading-relaxed mb-6 font-light">Mais de 20 anos em usinagem de precisão com tecnologia 100% nacional.</p>
+            <div className="flex gap-2">
+              {[{I:Facebook,c:"#2563eb"},{I:Instagram,c:"#ea580c"},{I:Youtube,c:"#ea580c"},{I:Linkedin,c:"#2563eb"}].map(({I,c},i)=>(
+                <motion.a key={i} href="#" className="w-8 h-8 flex items-center justify-center border border-white/[0.06] text-white/40 rounded-sm transition-all duration-300"
+                  whileHover={{y:-2,borderColor:`${c}40`,color:c}}><I size={13}/></motion.a>
               ))}
             </div>
-          </motion.div>
-
-          {/* Column 2 - Links Rápidos */}
-          <div>
-            <h3
-              className="mb-6"
-              style={{
-                fontSize: "16px",
-                fontWeight: 600,
-                color: "white",
-              }}
-            >
-              Navegação
-            </h3>
-            <ul className="space-y-3">
-              {["Início", "Produtos", "Serviços", "Sobre Nós", "Contato", "Blog", "Feiras e Eventos"].map(
-                (link) => (
-                  <li key={link}>
-                    <a
-                      href={`#${link.toLowerCase().replace(/\s+/g, "-")}`}
-                      className="transition-colors duration-300 hover:text-orange-400"
-                      style={{
-                        fontSize: "14px",
-                        color: "rgba(255, 255, 255, 0.7)",
-                      }}
-                    >
-                      {link}
-                    </a>
-                  </li>
-                )
-              )}
-            </ul>
           </div>
-
-          {/* Column 3 - Produtos */}
           <div>
-            <h3
-              className="mb-6"
-              style={{
-                fontSize: "16px",
-                fontWeight: 600,
-                color: "white",
-              }}
-            >
-              Equipamentos
-            </h3>
-            <ul className="space-y-3">
-              {["Alliance", "Artist 3D", "Joalheiro 4/5 Eixos", "Modelo 5D Pro", "Ver Todos"].map(
-                (produto) => (
-                  <li key={produto}>
-                    <a
-                      href="#produtos"
-                      className="transition-colors duration-300 hover:text-orange-400"
-                      style={{
-                        fontSize: "14px",
-                        color: "rgba(255, 255, 255, 0.7)",
-                      }}
-                    >
-                      {produto}
-                    </a>
-                  </li>
-                )
-              )}
-            </ul>
+            <h3 className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#2563eb]/50 mb-5">Navegação</h3>
+            <ul className="space-y-2.5">{["Início","Equipamentos","Tecnologia","Sobre","Contato"].map(l=>(<li key={l}><a href={`#${l.toLowerCase()}`} className="text-[13px] text-white/40 hover:text-white/60 transition-colors font-light">{l}</a></li>))}</ul>
           </div>
-
-          {/* Column 4 - Contato */}
           <div>
-            <h3
-              className="mb-6"
-              style={{
-                fontSize: "16px",
-                fontWeight: 600,
-                color: "white",
-              }}
-            >
-              Fale Conosco
-            </h3>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <MapPin size={18} style={{ color: "#FF6B35", flexShrink: 0, marginTop: "2px" }} />
-                <span
-                  style={{
-                    fontSize: "14px",
-                    color: "rgba(255, 255, 255, 0.7)",
-                    lineHeight: 1.5,
-                  }}
-                >
-                  Av. Casa Verde, 3434-C<br />
-                  São Paulo - SP
-                </span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Phone size={18} style={{ color: "#FF6B35", flexShrink: 0 }} />
-                <div style={{ fontSize: "14px", color: "rgba(255, 255, 255, 0.7)" }}>
-                  (11) 3951-0270<br />
-                  (11) 93802-3558
-                </div>
-              </li>
-              <li className="flex items-center gap-3">
-                <Mail size={18} style={{ color: "#FF6B35", flexShrink: 0 }} />
-                <span style={{ fontSize: "14px", color: "rgba(255, 255, 255, 0.7)" }}>
-                  cncflex@cncflex.com.br
-                </span>
-              </li>
+            <h3 className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#ea580c]/50 mb-5">Equipamentos</h3>
+            <ul className="space-y-2.5">{["Alliance","Artist 3D","Joalheiro 5º Eixo","5D Pro","Compacta"].map(p=>(<li key={p}><a href="#produtos" className="text-[13px] text-white/40 hover:text-white/60 transition-colors font-light">{p}</a></li>))}</ul>
+          </div>
+          <div>
+            <h3 className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#2563eb]/50 mb-5">Contato</h3>
+            <ul className="space-y-3">
+              <li className="flex items-start gap-2.5"><MapPin size={13} className="text-[#ea580c]/40 mt-0.5 shrink-0"/><span className="text-[13px] text-white/40 font-light leading-relaxed">Av. Casa Verde, 3434-C<br/>São Paulo - SP</span></li>
+              <li className="flex items-center gap-2.5"><Phone size={13} className="text-[#2563eb]/40 shrink-0"/><span className="text-[13px] text-white/40 font-light">(11) 3951-0270</span></li>
+              <li className="flex items-center gap-2.5"><Mail size={13} className="text-[#ea580c]/40 shrink-0"/><span className="text-[13px] text-white/40 font-light">cncflex@cncflex.com.br</span></li>
             </ul>
           </div>
         </div>
-
-        {/* Bottom Bar */}
-        <div
-          className="pt-8 border-t text-center"
-          style={{ borderColor: "rgba(255, 255, 255, 0.1)" }}
-        >
-          <p style={{ fontSize: "14px", color: "rgba(255, 255, 255, 0.6)" }}>
-            © {currentYear} CNC Flex - Todos os direitos reservados
-          </p>
-          <div className="flex justify-center gap-6 mt-4">
-            <a
-              href="#"
-              className="transition-colors duration-300 hover:text-orange-400"
-              style={{ fontSize: "14px", color: "rgba(255, 255, 255, 0.6)" }}
-            >
-              Política de Privacidade
-            </a>
-            <a
-              href="#"
-              className="transition-colors duration-300 hover:text-orange-400"
-              style={{ fontSize: "14px", color: "rgba(255, 255, 255, 0.6)" }}
-            >
-              Termos de Uso
-            </a>
-          </div>
+        <div className="pt-6 border-t border-white/[0.04] flex flex-col sm:flex-row justify-between items-center gap-3">
+          <p className="text-[11px] text-white/30 font-light">© {yr} CNC Flex — Todos os direitos reservados</p>
+          <div className="flex gap-5">{["Privacidade","Termos"].map(t=><a key={t} href="#" className="text-[11px] text-white/30 hover:text-white/30 transition-colors font-light">{t}</a>)}</div>
         </div>
       </div>
     </footer>

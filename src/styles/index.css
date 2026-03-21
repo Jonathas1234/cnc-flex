@@ -1,28 +1,8 @@
 @import './fonts.css';
 @import './tailwind.css';
 @import './theme.css';
-
-/* Slick Carousel Custom Styles */
-.slick-dots {
-  bottom: -40px !important;
-}
-
-.slick-dots li button:before {
-  color: #FF6B35 !important;
-  font-size: 10px !important;
-}
-
-.slick-dots li.slick-active button:before {
-  color: #FF6B35 !important;
-  opacity: 1 !important;
-}
-
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Scroll offset for fixed header */
-section[id] {
-  scroll-margin-top: 100px;
-}
+.slick-dots { bottom: -40px !important; }
+.slick-dots li button:before { color: #2563eb !important; font-size: 10px !important; }
+.slick-dots li.slick-active button:before { color: #2563eb !important; opacity: 1 !important; }
+html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: 80px; }
