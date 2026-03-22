@@ -12,7 +12,7 @@ export function Header() {
   return (
     <motion.header className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
       style={{ background: scrolled ? "rgba(255,255,255,0.92)" : "transparent", backdropFilter: scrolled ? "saturate(180%) blur(20px)" : "none",
-        boxShadow: scrolled ? "0 1px 0 rgba(10,60,110,0.08)" : "none" }}
+        boxShadow: "none" }}
       initial={{y:-80}} animate={{y:0}} transition={{duration:0.7,ease:[0.16,1,0.3,1]}}>
       <div className="max-w-7xl mx-auto px-5 sm:px-8 h-[72px] flex items-center justify-between">
         <a href="#inicio" onClick={(e)=>{e.preventDefault();go("#inicio")}} className="select-none">
@@ -48,6 +48,7 @@ export function Header() {
           </motion.div>
         )}
       </AnimatePresence>
+    {scrolled && <div className="absolute bottom-0 left-0 right-0 h-[2px]" style={{background:"linear-gradient(90deg, #0A3C6E 0%, #0A3C6E 40%, #F38104 60%, #F38104 100%)"}} />}
     </motion.header>
   );
 }
