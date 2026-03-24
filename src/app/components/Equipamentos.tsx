@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Zap, Ruler, Settings, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { ProductModal } from "./ProductModal";
 import { motion } from "motion/react";
 
@@ -8,14 +8,32 @@ export function Equipamentos() {
   const [selected, setSelected] = useState<any>(null);
   const filters = ["Todos","Joalheria","Dental","Industrial"];
   const produtos = [
-    {name:"Alliance",description:"Fresadora 5 Eixos Simultâneos",image:"/alliance.jpg",badge:"FLAGSHIP",badgeColor:"#0A3C6E",category:"Joalheria",specs:["5 eixos simultâneos","Precisão 0.01mm","Software CAD/CAM incluso"],fullDescription:"A Alliance é nossa máquina topo de linha para joalheria. 5 eixos simultâneos com precisão milimétrica.",technicalSpecs:["Área: 200×150×100mm","Resolução: 0.001mm","Até 30.000 RPM","CAD/CAM incluído","Refrigeração integrada","Garantia 2 anos"]},
-    {name:"Artist 3D",description:"Prototipagem e Usinagem 3D",image:"/artist3d.jpg",badge:"DESTAQUE",badgeColor:"#F38104",category:"Joalheria",specs:["Visualização 3D em tempo real","Prototipagem rápida","Monitor integrado"],fullDescription:"Revoluciona o processo de criação com visualização 3D antes da usinagem.",technicalSpecs:["Renderização real-time","500+ modelos","Simulação de usinagem","Monitor integrado","Wi-Fi e USB","STL/OBJ"]},
-    {name:"Joalheiro 4 Eixos",description:"Usinagem de Precisão para Joias",image:"/joalheiro.jpg",badge:"PRO",badgeColor:"#0A3C6E",category:"Joalheria",specs:["4 eixos de precisão","Ideal para anéis","Alta produtividade"],fullDescription:"Especializada em usinagem de joias com 4 eixos dedicados.",technicalSpecs:["Fixação patenteada","8-30mm diâmetro","Precisão 0.005mm","Troca automática","Produção em série","Baixo retrabalho"]},
-    {name:"CNC Dental",description:"Fresadora Odontológica 5 Eixos",image:"/dental.jpg",badge:"DENTAL",badgeColor:"#F38104",category:"Dental",specs:["5 eixos simultâneos","Precisão odontológica","Design compacto"],fullDescription:"Para o mercado odontológico com precisão para próteses e implantes.",technicalSpecs:["Certificada odontológica","Zircônia/PMMA/cera","Aspiração integrada","< 60dB","Touchscreen","CAD dental"]},
-    {name:"Shoesmaker",description:"Fresadora CNC Industrial",image:"/shoesmaker.jpg",badge:"INDUSTRIAL",badgeColor:"#0A3C6E",category:"Industrial",specs:["Alta capacidade","Mesa ampla","Produção contínua"],fullDescription:"Fresadora de mesa ampla para usinagem de peças maiores.",technicalSpecs:["Área ampliada","Alumínio reforçado","Alta potência","Guias lineares","Multi-material","24/7"]},
+    {name:"Alliance",description:"Fresadora CNC para Joalheria",image:"/alliance.jpg",badge:"FLAGSHIP",badgeColor:"#0A3C6E",category:"Joalheria",
+      specs:["5 eixos — tornear, gravar e diamantar","Spindle 800W — 30.000 RPM","Precisão para ouro, prata e latão"],
+      fullDescription:"Ideal para quem deseja inovar no mercado joalheiro produzindo diretamente no metal. A Alliance é uma máquina completa, capaz de tornear e gravar a parte interna, externa e lateral, além de executar múltiplas formas de diamantação e pré-cravação com alta precisão, rapidez e qualidade.",
+      technicalSpecs:["Dimensões da mesa: 360 × 100mm","Área útil: X=130mm / Y=120mm / Z=100mm","Motor Spindle: 800W (refrigeração a água 1HP)","Rotação: 30.000 RPM","Velocidade de corte: 1.200 mm/min","Barramento: Guias lineares NSK","Eixos: Fusos de Esferas NSK","Peso: 125 kg","Capacidade: tornear, gravar interno/externo/lateral","Diamantação e pré-cravação","Produção direta em ouro, prata e latão","Designs inovadores e exclusivos"]},
+    {name:"5D Pro Profissional",description:"Fresadora 6 Eixos para Joalheria e Bijuterias",image:"/dental.jpg",badge:"6 EIXOS",badgeColor:"#F38104",category:"Joalheria",
+      specs:["6 eixos — máxima versatilidade","Spindle 1.600W — 30.000 RPM","Compatível com Rhinoceros e ArtCam"],
+      fullDescription:"A 5D Pro-Profissional com o 6º eixo foi criada a partir de fundamentos e necessidades do setor joalheiro, de bijuterias e brindes. Permite que os profissionais deem formas criativas às suas ideias, desenvolvendo e confeccionando com clareza e precisão os seus produtos.",
+      technicalSpecs:["Dimensões da mesa: 475 × 150mm","Área útil: X=240mm / Y=170mm / Z=210mm","Motor Spindle: 1.600W (refrigeração a água 2HP)","Rotação: 30.000 RPM","Velocidade de corte: 1.200 mm/min","Precisão: 0,002mm","Barramento: Guias lineares NSK","4º e 5º eixo + 6º eixo","Peso: 50 kg","Softwares: Rhinoceros, ArtCam, Powershape","Compatível com SolidWorks e AutoCad","Ideal para joalheria, bijuterias e brindes"]},
+    {name:"Joalheiro 4º e 5º Eixo",description:"Usinagem Interna e Externa de Joias",image:"/joalheiro.jpg",badge:"PRO",badgeColor:"#0A3C6E",category:"Joalheria",
+      specs:["4º e 5º eixo — usinagem interna","Precisão de 0,002mm","Spindle 800W com refrigeração"],
+      fullDescription:"A máquina fresadora foi criada para concretizar suas ideias e fornecer soluções para as diversas exigências do setor joalheiro. Com o 4º eixo, realça sua criatividade ao proporcionar um trabalho rico e preciso em termos de detalhes. O 5º eixo permite usinagem interna de anéis.",
+      technicalSpecs:["Dimensões da mesa: 360 × 100mm","Área útil: X=130mm / Y=120mm / Z=100mm","Motor Spindle: 800W (refrigeração a água 1HP)","Rotação: 30.000 RPM","Velocidade de corte: 1.200 mm/min","Precisão: 0,002mm","Barramento: Guias lineares","4º eixo + 5º eixo (usinagem interna)","Peso: 45 kg","Softwares: Rhinoceros, ArtCam, Powershape","Compatível com SolidWorks e AutoCad","Sob consulta para configurações especiais"]},
+    {name:"CNC Dental 5D Pró",description:"Fresadora Odontológica 5 Eixos — Fabricação Nacional",image:"/dental.jpg",badge:"DENTAL",badgeColor:"#F38104",category:"Dental",
+      specs:["5 eixos — troca automática de ferramentas","Spindle 1.800W — 60.000 RPM","Zircônia, PMMA, titânio, CoCr e ceras"],
+      fullDescription:"Máquina fresadora CNC de fabricação nacional, com estrutura em aço utilizando guias lineares e fusos de esferas NSK (Japão). Trabalha com softwares abertos (CAD-Mill Box) possibilitando inserir, mudar e melhorar estratégias de usinagem conforme a necessidade. Conte com suporte, assistência técnica, treinamento e peças de reposição no Brasil.",
+      technicalSpecs:["Aplicação: Usinagem de próteses dentárias","Usinagem: A seco e irrigada","Número de eixos: 5 eixos","Motor Spindle: 1.800W — troca automática","Rotação: 60.000 RPM","Guias lineares e fusos de esferas: NSK (Japão)","Número de ferramentas: 10","Suporte para disco de 98mm","Blocos de cerâmicas: 8 cavidades","Materiais: Zircônia, PMMA, compósitos, cerâmicas, titânio, CoCr e ceras","Fresas homologadas OSG nacional","Software CAM: CIM System - Mill Box","Software CAD: Exocad","Máquina: 750×670×780mm / Gabinete: 750×670×1000mm","Peso: 150 kg"]},
+    {name:"Artist 3D",description:"Corte e Prototipagem de Alta Precisão",image:"/artist3d.jpg",badge:"VERSÁTIL",badgeColor:"#0A3C6E",category:"Joalheria",
+      specs:["Mesa ampla 435×300mm","Precisão de 0,002mm","Corte em ouro, prata, madeira e resinas"],
+      fullDescription:"A Artist 3D é indicada para corte com alta precisão de pingentes, brincos, nomes, mandalas em chapas de ouro e prata, bem como a criação de protótipos de alta precisão. Proporciona rapidez e qualidade para usinagem em materiais como madeira, plástico e resinas.",
+      technicalSpecs:["Dimensões da mesa: 435 × 300mm","Área útil: X=320mm / Y=250mm / Z=160mm","Motor Spindle: 800W (refrigeração a água 1HP)","Rotação: 30.000 RPM","Velocidade de corte: 1.200 mm/min","Precisão: 0,002mm","Barramento: Guias lineares NSK","4º eixo (opcional)","Pulverização (opcional)","Peso: 35 kg","Softwares: Rhinoceros, ArtCam, Powershape","Compatível com SolidWorks e AutoCad","Ideal para pingentes, brincos, nomes e mandalas","Materiais: ouro, prata, madeira, plástico e resinas"]},
+    {name:"Shoesmaker",description:"Fresadora CNC Multiaplicação",image:"/shoesmaker.jpg",badge:"INDUSTRIAL",badgeColor:"#0A3C6E",category:"Industrial",
+      specs:["Mesa ampla 530×400mm","Fusos de esferas NSK","Corte de chapas, couros e protótipos"],
+      fullDescription:"Solução indicada para as mais variadas aplicações: corte de chapas de metais como ouro e prata, nos setores calçadistas, de bolsas e acessórios na confecção de maquetes de solados, corte de couros, protótipos de fivelas e afins. Perfeita para trabalhos que exigem minuciosa precisão e alta reprodutibilidade.",
+      technicalSpecs:["Dimensões da mesa: 530 × 400mm","Área útil: X=400mm / Y=350mm / Z=145mm","Motor Spindle: 800W (refrigeração a água 1HP)","Rotação: 30.000 RPM","Velocidade de corte: 1.500 mm/min","Barramento: Guias lineares NSK","Eixos: Fusos de Esferas NSK","4º eixo (opcional)","Peso: 42 kg","Softwares: Rhinoceros e ArtCam","Aplicações: calçados, bolsas, acessórios, joias","Corte de chapas de ouro, prata e couros","Maquetes de solados e protótipos de fivelas","Alta reprodutibilidade de detalhes"]},
   ];
   const list = filter==="Todos"?produtos:produtos.filter(p=>p.category===filter);
-
   return (
     <section className="py-28 bg-[#f7f8fa]" id="produtos">
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
@@ -43,13 +61,13 @@ export function Equipamentos() {
               </div>
               <div className="p-6">
                 <h3 className="text-lg font-bold text-[#0A3C6E] mb-1 group-hover:text-[#F38104] transition-colors duration-500">{p.name}</h3>
-                <p className="text-[14px] text-[#0f1419]/50 mb-5 font-light">{p.description}</p>
+                <p className="text-[13px] text-[#0f1419]/50 mb-5">{p.description}</p>
                 <div className="space-y-2 mb-6">
-                  {p.specs.map((s,j)=>(<div key={j} className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full" style={{background:j%2===0?"#0A3C6E":"#F38104"}}/><span className="text-[13px] text-[#0f1419]/60 font-light">{s}</span></div>))}
+                  {p.specs.map((s,j)=>(<div key={j} className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full" style={{background:j%2===0?"#0A3C6E":"#F38104"}}/><span className="text-[13px] text-[#0f1419]/60">{s}</span></div>))}
                 </div>
                 <div className="flex gap-2">
                   <button onClick={(e)=>{e.stopPropagation();setSelected(p)}} className="flex-1 py-2.5 text-[10px] font-bold tracking-[0.12em] uppercase border border-[#0A3C6E]/20 text-[#0A3C6E] hover:bg-[#0A3C6E]/5 rounded-sm transition-all">Detalhes</button>
-                  <a href={`https://wa.me/5511938023558?text=${encodeURIComponent(`Olá! Orçamento para ${p.name}`)}`} target="_blank" rel="noopener noreferrer" onClick={e=>e.stopPropagation()}
+                  <a href={`https://wa.me/5511938023558?text=${encodeURIComponent(`Olá! Gostaria de um orçamento para a máquina ${p.name}`)}`} target="_blank" rel="noopener noreferrer" onClick={e=>e.stopPropagation()}
                     className="flex-1 py-2.5 text-[10px] font-bold tracking-[0.12em] uppercase text-center bg-[#F38104] text-white hover:brightness-110 rounded-sm transition-all">Solicitar</a>
                 </div>
               </div>

@@ -17,11 +17,11 @@ export function Hero() {
         </motion.div>
         <motion.h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-[0.95] mb-8" style={{letterSpacing:"-0.045em"}}
           initial={{opacity:0,y:40}} animate={{opacity:1,y:0}} transition={{duration:1,delay:0.5,ease:[0.16,1,0.3,1]}}>
-          Precisão que{" "}<span className="text-[#F38104]">transforma</span><br className="hidden sm:block" />{" "}metal em <span className="text-[#F38104]">arte</span>
+          Precisão que{" "}<span className="text-[#F38104]">transforma</span><br className="hidden sm:block" />{" "}ideias em <span className="text-[#F38104]">realidade</span>
         </motion.h1>
         <motion.p className="text-base sm:text-lg text-white/60 leading-relaxed max-w-2xl mx-auto mb-12 font-light"
           initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{duration:0.8,delay:0.7}}>
-          Máquinas CNC de 5 eixos simultâneos para joalheria. Do protótipo 3D à peça final com precisão milimétrica.
+          Máquinas CNC de 5 eixos simultâneos para joalheria, odontologia e indústria. Do protótipo 3D à peça final com precisão milimétrica.
         </motion.p>
         <motion.div className="flex flex-wrap justify-center gap-4 mb-20" initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{duration:0.8,delay:0.9}}>
           <a href="#produtos" onClick={(e)=>{e.preventDefault();document.querySelector("#produtos")?.scrollIntoView({behavior:"smooth"})}}
