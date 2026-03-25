@@ -7,7 +7,7 @@ export function Depoimentos() {
     {text:"Produtividade triplicou, qualidade melhorou muito. Nossos clientes notaram a diferença imediatamente.",author:"Carlos Mendes",role:"Gerente Industrial",co:"Acessórios Finos MG",avatar:"https://ui-avatars.com/api/?name=CM&background=0A3C6E&color=fff&size=80&bold=true"},
   ];
   return (
-    <section className="py-28 bg-white">
+    <section className="py-28 bg-gradient-to-b from-white to-[#f0f2f5]">
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="text-center mb-16">
           <motion.div className="flex items-center justify-center gap-3 mb-4" initial={{opacity:0}} whileInView={{opacity:1}} viewport={{once:true}}>
@@ -19,12 +19,13 @@ export function Depoimentos() {
         </div>
         <div className="grid md:grid-cols-3 gap-5">
           {deps.map((d,i)=>(<motion.div key={i} initial={{opacity:0,y:20}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay:i*0.1}}
-            className="p-8 bg-[#f7f8fa] border border-[#0f1419]/[0.03] hover:shadow-lg rounded-sm transition-all duration-500 relative flex flex-col">
+            className="p-8 bg-white/60 backdrop-blur-lg border border-white/70 hover:bg-white/80 hover:shadow-[0_8px_32px_rgba(10,60,110,0.1)] rounded-xl transition-all duration-500 relative flex flex-col"
+            style={{boxShadow:"0 4px 24px rgba(0,0,0,0.04), 0 1px 0 rgba(255,255,255,0.8) inset"}}>
             <Quote size={20} className="text-[#0A3C6E]/10 absolute top-6 right-6"/>
             <div className="flex gap-0.5 mb-5">{[...Array(5)].map((_,j)=><Star key={j} size={12} fill="#F38104" className="text-[#F38104]"/>)}</div>
             <p className="text-[16px] text-[#0f1419]/65 leading-[1.7] mb-8 font-light italic flex-1">"{d.text}"</p>
             <div className="flex items-center gap-3 mt-auto">
-              <img src={d.avatar} alt={d.author} className="w-10 h-10 rounded-full flex-shrink-0"/>
+              <img src={d.avatar} alt={d.author} className="w-10 h-10 rounded-full flex-shrink-0 ring-2 ring-white/50"/>
               <div className="min-w-0"><div className="text-[15px] font-semibold text-[#0A3C6E]">{d.author}</div>
               <div className="text-[12px] text-[#F38104]/70 truncate">{d.role} • {d.co}</div></div>
             </div>

@@ -10,7 +10,7 @@ export function Diferenciais() {
     {icon:Zap,title:"Alta Tecnologia",desc:"Fresagem de alta precisão para joias, bijuterias e acessórios com padrão internacional.",c:"#F38104",link:"Nossa história",target:"#sobre"},
   ];
   return (
-    <section className="relative py-28 bg-white" id="diferenciais">
+    <section className="relative py-28 bg-gradient-to-b from-[#f0f2f5] to-[#f7f8fa]" id="diferenciais">
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#0A3C6E] via-[#F38104] to-[#0A3C6E]" />
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <motion.div className="flex items-center gap-3 mb-4" initial={{opacity:0,x:-20}} whileInView={{opacity:1,x:0}} viewport={{once:true}}>
@@ -27,11 +27,12 @@ export function Diferenciais() {
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {items.map((it,i)=>(
-            <motion.div key={i} className="group relative p-8 bg-[#f7f8fa] border border-[#0f1419]/[0.04] hover:shadow-lg transition-all duration-700 overflow-hidden rounded-sm cursor-pointer"
+            <motion.div key={i} className="group relative p-8 bg-white/60 backdrop-blur-lg border border-white/70 hover:bg-white/80 hover:shadow-[0_8px_32px_rgba(10,60,110,0.1)] transition-all duration-700 overflow-hidden rounded-xl cursor-pointer"
+              style={{boxShadow:"0 4px 24px rgba(0,0,0,0.04), 0 1px 0 rgba(255,255,255,0.8) inset"}}
               initial={{opacity:0,y:30}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay:i*0.08}}
               onClick={()=>go(it.target)}>
               <div className="absolute top-0 left-0 right-0 h-[3px] scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left" style={{background:it.c}} />
-              <div className="w-10 h-10 flex items-center justify-center mb-6 rounded-lg" style={{background:`${it.c}10`,border:`1px solid ${it.c}20`}}>
+              <div className="w-11 h-11 flex items-center justify-center mb-6 rounded-xl backdrop-blur-sm" style={{background:`${it.c}12`,border:`1px solid ${it.c}25`,boxShadow:`0 4px 12px ${it.c}10`}}>
                 <it.icon size={18} style={{color:it.c}} />
               </div>
               <h3 className="text-[16px] font-bold text-[#0A3C6E] mb-3">{it.title}</h3>

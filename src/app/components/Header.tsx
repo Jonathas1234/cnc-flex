@@ -11,8 +11,13 @@ export function Header() {
 
   return (
     <motion.header className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
-      style={{ background: scrolled ? "rgba(255,255,255,0.92)" : "transparent", backdropFilter: scrolled ? "saturate(180%) blur(20px)" : "none",
-        boxShadow: "none" }}
+      style={{
+        background: scrolled ? "rgba(255,255,255,0.65)" : "transparent",
+        backdropFilter: scrolled ? "saturate(180%) blur(20px)" : "none",
+        WebkitBackdropFilter: scrolled ? "saturate(180%) blur(20px)" : "none",
+        boxShadow: scrolled ? "0 8px 32px rgba(10,60,110,0.08), 0 1px 0 rgba(255,255,255,0.5) inset" : "none",
+        borderBottom: scrolled ? "1px solid rgba(255,255,255,0.3)" : "1px solid transparent",
+      }}
       initial={{y:-80}} animate={{y:0}} transition={{duration:0.7,ease:[0.16,1,0.3,1]}}>
       <div className="max-w-7xl mx-auto px-5 sm:px-8 h-[72px] flex items-center justify-between">
         <a href="#inicio" onClick={(e)=>{e.preventDefault();go("#inicio")}} className="select-none">
@@ -26,7 +31,7 @@ export function Header() {
         </nav>
         <div className="flex items-center gap-4">
           <a href="https://wa.me/5511938023558" target="_blank" rel="noopener noreferrer"
-            className="hidden lg:inline-flex px-6 py-2.5 text-[11px] font-bold tracking-[0.15em] uppercase bg-[#F38104] text-white hover:brightness-110 transition-all duration-300 rounded-sm">
+            className="hidden lg:inline-flex px-6 py-2.5 text-[11px] font-bold tracking-[0.15em] uppercase bg-[#F38104] text-white hover:brightness-110 transition-all duration-300 rounded-sm shadow-[0_4px_16px_rgba(243,129,4,0.25)]">
             Orçamento
           </a>
           <button onClick={()=>setOpen(!open)} className={"lg:hidden transition-colors " + (scrolled ? "text-[#0A3C6E]" : "text-white")}><Menu size={22}/></button>

@@ -23,14 +23,14 @@ export function Newsletter() {
         </motion.h2>
         <motion.p className="text-[16px] text-white/80 mb-10 font-light" initial={{opacity:0}} whileInView={{opacity:1}} viewport={{once:true}}>Dicas, tutoriais e lançamentos no seu e-mail</motion.p>
         {sent ? (
-          <motion.div className="flex items-center justify-center gap-3 py-5 bg-white/20 backdrop-blur-sm rounded-sm"
+          <motion.div className="flex items-center justify-center gap-3 py-5 bg-white/[0.15] backdrop-blur-xl border border-white/[0.25] rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.1)]"
             initial={{opacity:0,scale:0.95}} animate={{opacity:1,scale:1}}>
             <Check size={20} className="text-white" />
             <span className="text-[15px] font-semibold text-white">E-mail cadastrado com sucesso!</span>
           </motion.div>
         ) : (
-          <motion.div className="flex flex-col sm:flex-row overflow-hidden rounded-sm shadow-xl" initial={{opacity:0,y:15}} whileInView={{opacity:1,y:0}} viewport={{once:true}}>
-            <div className="flex-1 flex items-center gap-3 px-5 bg-white">
+          <motion.div className="flex flex-col sm:flex-row overflow-hidden rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.15)] border border-white/[0.2] bg-white/[0.1] backdrop-blur-xl" initial={{opacity:0,y:15}} whileInView={{opacity:1,y:0}} viewport={{once:true}}>
+            <div className="flex-1 flex items-center gap-3 px-5 bg-white/90 backdrop-blur-sm">
               <Mail size={16} className="text-[#0A3C6E]/40"/>
               <input type="email" placeholder="Seu melhor e-mail" value={email} onChange={(e)=>setEmail(e.target.value)}
                 onKeyDown={(e)=>{if(e.key==="Enter") handleSubmit()}}

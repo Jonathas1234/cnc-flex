@@ -11,14 +11,17 @@ export function SobreNos() {
         <motion.h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-[1.08] mb-10" style={{letterSpacing:"-0.04em"}} initial={{opacity:0,y:20}} whileInView={{opacity:1,y:0}} viewport={{once:true}}>
           Duas décadas de <span className="text-[#0A3C6E]">inovação</span>
         </motion.h2>
-        <motion.p className="text-[17px] text-white leading-relaxed mb-5 font-light max-w-2xl mx-auto" initial={{opacity:0,y:15}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay:0.1}}>
-          A CNC Flex nasceu para modernizar o mercado brasileiro de usinagem. Há mais de 20 anos, desenvolvemos equipamentos de fresagem de alta precisão com tecnologia 100% nacional e padrão internacional.
-        </motion.p>
-        <motion.p className="text-[16px] text-white/80 leading-relaxed mb-16 font-light max-w-2xl mx-auto" initial={{opacity:0,y:15}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay:0.2}}>
-          Nossa missão é entregar soluções completas — desde a máquina até o treinamento e assistência técnica. Financiamento pelo BNDES e suporte em todo o Brasil.
-        </motion.p>
+        <motion.div className="max-w-2xl mx-auto p-8 rounded-2xl bg-white/[0.12] backdrop-blur-xl border border-white/[0.2] shadow-[0_8px_32px_rgba(0,0,0,0.1)] mb-16"
+          initial={{opacity:0,y:15}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay:0.1}}>
+          <p className="text-[17px] text-white leading-relaxed mb-5 font-light">
+            A CNC Flex nasceu para modernizar o mercado brasileiro de usinagem. Há mais de 20 anos, desenvolvemos equipamentos de fresagem de alta precisão com tecnologia 100% nacional e padrão internacional.
+          </p>
+          <p className="text-[16px] text-white/80 leading-relaxed font-light">
+            Nossa missão é entregar soluções completas — desde a máquina até o treinamento e assistência técnica. Financiamento pelo BNDES e suporte em todo o Brasil.
+          </p>
+        </motion.div>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          {stats.map((s,i)=>(<motion.div key={i} className="p-8 bg-white/20 backdrop-blur-sm border border-white/15 rounded-sm hover:bg-white/30 transition-all duration-500"
+          {stats.map((s,i)=>(<motion.div key={i} className="p-8 bg-white/[0.15] backdrop-blur-xl border border-white/[0.25] rounded-2xl hover:bg-white/[0.25] hover:border-white/[0.35] transition-all duration-500 shadow-[0_8px_32px_rgba(0,0,0,0.08)]"
             initial={{opacity:0,y:20}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay:i*0.08}}>
             <div className="text-3xl sm:text-4xl font-bold text-white mb-2" style={{letterSpacing:"-0.03em"}}>{s.n}</div>
             <div className="text-[12px] font-semibold tracking-[0.1em] uppercase text-white/70">{s.l}</div>
@@ -26,7 +29,7 @@ export function SobreNos() {
         </div>
         <motion.div className="mt-12" initial={{opacity:0,y:15}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay:0.4}}>
           <a href="#contato" onClick={(e)=>{e.preventDefault();document.querySelector("#contato")?.scrollIntoView({behavior:"smooth"})}}
-            className="inline-flex px-10 py-4 text-[12px] font-bold tracking-[0.12em] uppercase bg-[#0A3C6E] text-white hover:brightness-125 rounded-sm transition-all duration-300 shadow-lg">
+            className="inline-flex px-10 py-4 text-[12px] font-bold tracking-[0.12em] uppercase bg-[#0A3C6E] text-white hover:brightness-125 rounded-sm transition-all duration-300 shadow-[0_4px_20px_rgba(10,60,110,0.4)]">
             Fale com a gente
           </a>
         </motion.div>

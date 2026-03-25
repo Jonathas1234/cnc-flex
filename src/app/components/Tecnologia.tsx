@@ -9,15 +9,17 @@ export function Tecnologia() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div className="relative order-2 lg:order-1" initial={{opacity:0,x:-40}} whileInView={{opacity:1,x:0}} viewport={{once:true}} transition={{duration:0.8}}>
-            <div className="relative overflow-hidden rounded-sm" style={{aspectRatio:"16/9"}}>
-              {playing ? (<iframe src="https://www.youtube.com/embed/cnc1YNbOMjM?autoplay=1&rel=0" title="Alliance" className="w-full h-full absolute inset-0" allow="autoplay; encrypted-media" allowFullScreen />
-              ) : (<>
-                <img src="https://img.youtube.com/vi/cnc1YNbOMjM/hqdefault.jpg" alt="Alliance CNC" className="w-full h-full object-cover"/>
-                <div className="absolute inset-0 flex items-center justify-center cursor-pointer group" onClick={()=>setPlaying(true)}>
-                  <div className="w-20 h-20 flex items-center justify-center rounded-full bg-[#F38104] shadow-2xl group-hover:scale-110 transition-transform duration-300">
-                    <Play size={28} className="text-white ml-1"/>
-                  </div>
-                </div></>)}
+            <div className="relative overflow-hidden rounded-2xl border border-white/[0.12] shadow-[0_8px_40px_rgba(0,0,0,0.3)]" style={{aspectRatio:"16/9",background:"rgba(255,255,255,0.05)",backdropFilter:"blur(8px)"}}>
+              <div className="absolute inset-[1px] rounded-2xl overflow-hidden">
+                {playing ? (<iframe src="https://www.youtube.com/embed/cnc1YNbOMjM?autoplay=1&rel=0" title="Alliance" className="w-full h-full absolute inset-0" allow="autoplay; encrypted-media" allowFullScreen />
+                ) : (<>
+                  <img src="https://img.youtube.com/vi/cnc1YNbOMjM/hqdefault.jpg" alt="Alliance CNC" className="w-full h-full object-cover"/>
+                  <div className="absolute inset-0 flex items-center justify-center cursor-pointer group" onClick={()=>setPlaying(true)}>
+                    <div className="w-20 h-20 flex items-center justify-center rounded-full bg-[#F38104] shadow-[0_8px_32px_rgba(243,129,4,0.4)] group-hover:scale-110 transition-transform duration-300">
+                      <Play size={28} className="text-white ml-1"/>
+                    </div>
+                  </div></>)}
+              </div>
             </div>
           </motion.div>
           <motion.div className="order-1 lg:order-2" initial={{opacity:0,x:40}} whileInView={{opacity:1,x:0}} viewport={{once:true}}>
@@ -27,15 +29,15 @@ export function Tecnologia() {
             </h2>
             <p className="text-[16px] text-white/70 leading-relaxed mb-10 font-light max-w-lg">Até cinco eixos simultâneos de fresagem e sexto eixo para usinagem interna. Visualização digital em 3D sem protótipo físico.</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
-              {features.map((f,i)=>(<motion.div key={i} className="flex items-center gap-3" initial={{opacity:0,x:-10}} whileInView={{opacity:1,x:0}} viewport={{once:true}} transition={{delay:i*0.05}}>
-                <div className="w-5 h-5 flex items-center justify-center rounded" style={{background:i%2===0?"rgba(243,129,4,0.2)":"rgba(255,255,255,0.1)"}}>
+              {features.map((f,i)=>(<motion.div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.05] backdrop-blur-sm border border-white/[0.08] hover:bg-white/[0.08] transition-all duration-300" initial={{opacity:0,x:-10}} whileInView={{opacity:1,x:0}} viewport={{once:true}} transition={{delay:i*0.05}}>
+                <div className="w-6 h-6 flex items-center justify-center rounded-lg" style={{background:i%2===0?"rgba(243,129,4,0.2)":"rgba(255,255,255,0.1)"}}>
                   <Check size={11} style={{color:i%2===0?"#F38104":"#fff"}} strokeWidth={3}/></div>
                 <span className="text-[15px] text-white/80 font-light">{f}</span>
               </motion.div>))}
             </div>
             <div className="flex flex-wrap gap-2">
               {[{icon:Layers,t:"5 Eixos"},{icon:Cpu,t:"CAD/CAM"},{icon:Sparkles,t:"Precisão"}].map((b,i)=>(
-                <div key={i} className="flex items-center gap-2 px-4 py-2 rounded-sm border border-white/10 bg-white/5">
+                <div key={i} className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/[0.12] bg-white/[0.06] backdrop-blur-md shadow-[0_4px_16px_rgba(0,0,0,0.1)]">
                   <b.icon size={13} className="text-[#F38104]"/><span className="text-[10px] font-bold tracking-[0.12em] uppercase text-white/50">{b.t}</span>
                 </div>))}
             </div>

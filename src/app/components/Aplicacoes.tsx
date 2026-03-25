@@ -12,7 +12,7 @@ export function Aplicacoes() {
     {icon:Cog,title:"Industrial",desc:"Componentes de alta performance"},
   ];
   return (
-    <section className="py-28 bg-white">
+    <section className="py-28 bg-gradient-to-b from-white to-[#f0f2f5]">
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="text-center mb-16">
           <motion.div className="flex items-center justify-center gap-3 mb-4" initial={{opacity:0}} whileInView={{opacity:1}} viewport={{once:true}}>
@@ -25,8 +25,10 @@ export function Aplicacoes() {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           {items.map((it,i)=>{const Icon=it.icon;return(
             <motion.div key={i} initial={{opacity:0,y:20}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay:i*0.04}}
-              onClick={()=>document.querySelector("#contato")?.scrollIntoView({behavior:"smooth"})} className="group p-8 bg-[#f7f8fa] hover:bg-[#0A3C6E] border border-[#0f1419]/[0.04] hover:border-[#0A3C6E] text-center cursor-pointer transition-all duration-500 rounded-sm relative overflow-hidden">
-              <div className="w-12 h-12 mx-auto mb-5 flex items-center justify-center rounded-lg bg-[#0A3C6E]/8 group-hover:bg-white/15 border border-[#0A3C6E]/10 group-hover:border-white/20 transition-all duration-500">
+              onClick={()=>document.querySelector("#contato")?.scrollIntoView({behavior:"smooth"})}
+              className="group p-8 bg-white/60 backdrop-blur-lg hover:bg-[#0A3C6E] border border-white/70 hover:border-[#0A3C6E] text-center cursor-pointer transition-all duration-500 rounded-xl relative overflow-hidden"
+              style={{boxShadow:"0 4px 24px rgba(0,0,0,0.04), 0 1px 0 rgba(255,255,255,0.8) inset"}}>
+              <div className="w-12 h-12 mx-auto mb-5 flex items-center justify-center rounded-xl bg-[#0A3C6E]/8 group-hover:bg-white/15 border border-[#0A3C6E]/10 group-hover:border-white/20 transition-all duration-500 backdrop-blur-sm">
                 <Icon size={22} className="text-[#0A3C6E] group-hover:text-white transition-colors duration-500"/>
               </div>
               <h3 className="text-[16px] font-bold text-[#0A3C6E] group-hover:text-white mb-2 transition-colors duration-500">{it.title}</h3>

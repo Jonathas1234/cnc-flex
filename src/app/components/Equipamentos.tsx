@@ -45,19 +45,21 @@ export function Equipamentos() {
             initial={{opacity:0,y:20}} whileInView={{opacity:1,y:0}} viewport={{once:true}}>
             Máquinas de <span className="text-[#F38104]">alta precisão</span>
           </motion.h2>
-          <motion.div className="flex flex-wrap gap-2" initial={{opacity:0}} whileInView={{opacity:1}} viewport={{once:true}}>
+          <motion.div className="flex flex-wrap gap-2 p-1.5 rounded-xl bg-white/50 backdrop-blur-sm border border-white/60" initial={{opacity:0}} whileInView={{opacity:1}} viewport={{once:true}}>
             {filters.map(f=>(<button key={f} onClick={()=>setFilter(f)}
-              className="px-5 py-2 text-[11px] font-semibold tracking-[0.12em] uppercase transition-all duration-300 rounded-sm"
-              style={{background:filter===f?"#0A3C6E":"transparent",color:filter===f?"#fff":"rgba(10,60,110,0.4)",border:filter===f?"1px solid transparent":"1px solid rgba(10,60,110,0.1)"}}>{f}</button>))}
+              className="px-5 py-2 text-[11px] font-semibold tracking-[0.12em] uppercase transition-all duration-300 rounded-lg"
+              style={{background:filter===f?"#0A3C6E":"transparent",color:filter===f?"#fff":"rgba(10,60,110,0.4)",boxShadow:filter===f?"0 4px 12px rgba(10,60,110,0.2)":"none"}}>{f}</button>))}
           </motion.div>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {list.map((p,i)=>(
             <motion.div key={p.name+filter} initial={{opacity:0,y:30}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{duration:0.5,delay:i*0.06}}
-              className="group bg-white border border-[#0f1419]/[0.04] hover:shadow-xl overflow-hidden cursor-pointer transition-all duration-700 rounded-sm" onClick={()=>setSelected(p)}>
-              <div className="relative aspect-[4/3] overflow-hidden bg-white p-4">
+              className="group bg-white/60 backdrop-blur-lg border border-white/70 hover:bg-white/80 hover:shadow-[0_12px_40px_rgba(10,60,110,0.1)] overflow-hidden cursor-pointer transition-all duration-700 rounded-xl"
+              style={{boxShadow:"0 4px_24px rgba(0,0,0,0.04), 0 1px 0 rgba(255,255,255,0.8) inset"}}
+              onClick={()=>setSelected(p)}>
+              <div className="relative aspect-[4/3] overflow-hidden bg-white/40 p-4">
                 <img src={p.image} alt={p.name} className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105" />
-                {p.badge && <div className="absolute top-3 left-3 px-3 py-1 text-[9px] font-bold tracking-[0.15em] uppercase text-white rounded-sm" style={{background:p.badgeColor}}>{p.badge}</div>}
+                {p.badge && <div className="absolute top-3 left-3 px-3 py-1 text-[9px] font-bold tracking-[0.15em] uppercase text-white rounded-lg backdrop-blur-sm shadow-lg" style={{background:`${p.badgeColor}dd`}}>{p.badge}</div>}
               </div>
               <div className="p-6">
                 <h3 className="text-lg font-bold text-[#0A3C6E] mb-1 group-hover:text-[#F38104] transition-colors duration-500">{p.name}</h3>
@@ -66,9 +68,9 @@ export function Equipamentos() {
                   {p.specs.map((s,j)=>(<div key={j} className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full" style={{background:j%2===0?"#0A3C6E":"#F38104"}}/><span className="text-[13px] text-[#0f1419]/60">{s}</span></div>))}
                 </div>
                 <div className="flex gap-2">
-                  <button onClick={(e)=>{e.stopPropagation();setSelected(p)}} className="flex-1 py-2.5 text-[10px] font-bold tracking-[0.12em] uppercase border border-[#0A3C6E]/20 text-[#0A3C6E] hover:bg-[#0A3C6E]/5 rounded-sm transition-all">Detalhes</button>
+                  <button onClick={(e)=>{e.stopPropagation();setSelected(p)}} className="flex-1 py-2.5 text-[10px] font-bold tracking-[0.12em] uppercase border border-[#0A3C6E]/15 text-[#0A3C6E] hover:bg-[#0A3C6E]/5 rounded-lg transition-all">Detalhes</button>
                   <a href={`https://wa.me/5511938023558?text=${encodeURIComponent(`Olá! Gostaria de um orçamento para a máquina ${p.name}`)}`} target="_blank" rel="noopener noreferrer" onClick={e=>e.stopPropagation()}
-                    className="flex-1 py-2.5 text-[10px] font-bold tracking-[0.12em] uppercase text-center bg-[#F38104] text-white hover:brightness-110 rounded-sm transition-all">Solicitar</a>
+                    className="flex-1 py-2.5 text-[10px] font-bold tracking-[0.12em] uppercase text-center bg-[#F38104] text-white hover:brightness-110 rounded-lg transition-all shadow-[0_4px_12px_rgba(243,129,4,0.25)]">Solicitar</a>
                 </div>
               </div>
             </motion.div>
