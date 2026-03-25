@@ -14,7 +14,7 @@ import { WhatsAppButton } from "./components/WhatsAppButton";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white" style={{ fontFamily: 'Inter, sans-serif' }}>
+    <div className="min-h-screen bg-white overflow-x-hidden" style={{ fontFamily: 'Inter, sans-serif' }}>
       <Header />
       <Hero />
       <Diferenciais />

@@ -1,35 +1,50 @@
 import { motion } from "motion/react";
+
 export function SobreNos() {
-  const stats = [{n:"20+",l:"Anos de mercado"},{n:"1000+",l:"Clientes atendidos"},{n:"100%",l:"Tecnologia nacional"},{n:"24/7",l:"Suporte técnico"}];
+  const stats = [
+    { n: "20+", l: "Anos de mercado" },
+    { n: "1000+", l: "Clientes atendidos" },
+    { n: "100%", l: "Tecnologia nacional" },
+    { n: "24/7", l: "Suporte técnico" },
+  ];
   return (
-    <section id="sobre" className="py-28 relative overflow-hidden" style={{background:"linear-gradient(135deg, #F38104 0%, #e06f00 40%, #c85f00 100%)"}}>
-      <div className="absolute inset-0 opacity-[0.04]" style={{backgroundImage:"radial-gradient(circle at 1px 1px, white 1px, transparent 0)",backgroundSize:"32px 32px"}} />
-      <div className="max-w-4xl mx-auto px-5 sm:px-8 text-center relative z-10">
-        <motion.div className="flex items-center justify-center gap-3 mb-6" initial={{opacity:0}} whileInView={{opacity:1}} viewport={{once:true}}>
-          <div className="w-8 h-[1px] bg-white/50"/><span className="text-[12px] font-semibold tracking-[0.2em] uppercase text-white/80">Nossa história</span><div className="w-8 h-[1px] bg-white/50"/>
+    <section id="sobre" className="py-16 sm:py-28 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #F38104 0%, #e06f00 40%, #c85f00 100%)" }}>
+      <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)", backgroundSize: "32px 32px" }} />
+      <div className="max-w-4xl mx-auto px-4 sm:px-8 text-center relative z-10">
+        <motion.div className="flex items-center justify-center gap-3 mb-4 sm:mb-6" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
+          <div className="w-8 h-[1px] bg-white/50" />
+          <span className="text-[11px] sm:text-[12px] font-semibold tracking-[0.2em] uppercase text-white/80">Nossa história</span>
+          <div className="w-8 h-[1px] bg-white/50" />
         </motion.div>
-        <motion.h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-[1.08] mb-10" style={{letterSpacing:"-0.04em"}} initial={{opacity:0,y:20}} whileInView={{opacity:1,y:0}} viewport={{once:true}}>
+        <motion.h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.08] mb-8 sm:mb-10" style={{ letterSpacing: "-0.04em" }} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
           Duas décadas de <span className="text-[#0A3C6E]">inovação</span>
         </motion.h2>
-        <motion.div className="max-w-2xl mx-auto p-8 rounded-2xl bg-white/[0.12] backdrop-blur-xl border border-white/[0.2] shadow-[0_8px_32px_rgba(0,0,0,0.1)] mb-16"
-          initial={{opacity:0,y:15}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay:0.1}}>
-          <p className="text-[17px] text-white leading-relaxed mb-5 font-light">
+        <motion.div className="max-w-2xl mx-auto p-5 sm:p-8 rounded-xl sm:rounded-2xl bg-white/[0.12] backdrop-blur-xl border border-white/[0.2] shadow-[0_8px_32px_rgba(0,0,0,0.1)] mb-10 sm:mb-16" initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1, duration: 0.4 }}>
+          <p className="text-[15px] sm:text-[17px] text-white leading-relaxed mb-4 sm:mb-5 font-light">
             A CNC Flex nasceu para modernizar o mercado brasileiro de usinagem. Há mais de 20 anos, desenvolvemos equipamentos de fresagem de alta precisão com tecnologia 100% nacional e padrão internacional.
           </p>
-          <p className="text-[16px] text-white/80 leading-relaxed font-light">
+          <p className="text-[14px] sm:text-[16px] text-white/80 leading-relaxed font-light">
             Nossa missão é entregar soluções completas — desde a máquina até o treinamento e assistência técnica. Financiamento pelo BNDES e suporte em todo o Brasil.
           </p>
         </motion.div>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          {stats.map((s,i)=>(<motion.div key={i} className="p-8 bg-white/[0.15] backdrop-blur-xl border border-white/[0.25] rounded-2xl hover:bg-white/[0.25] hover:border-white/[0.35] transition-all duration-500 shadow-[0_8px_32px_rgba(0,0,0,0.08)]"
-            initial={{opacity:0,y:20}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay:i*0.08}}>
-            <div className="text-3xl sm:text-4xl font-bold text-white mb-2" style={{letterSpacing:"-0.03em"}}>{s.n}</div>
-            <div className="text-[12px] font-semibold tracking-[0.1em] uppercase text-white/70">{s.l}</div>
-          </motion.div>))}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+          {stats.map((s, i) => (
+            <motion.div
+              key={i}
+              className="p-5 sm:p-8 bg-white/[0.15] backdrop-blur-xl border border-white/[0.25] rounded-xl sm:rounded-2xl transition-all duration-500 shadow-[0_8px_32px_rgba(0,0,0,0.08)]"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.06, duration: 0.4 }}
+            >
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 sm:mb-2" style={{ letterSpacing: "-0.03em" }}>{s.n}</div>
+              <div className="text-[10px] sm:text-[12px] font-semibold tracking-[0.08em] sm:tracking-[0.1em] uppercase text-white/70">{s.l}</div>
+            </motion.div>
+          ))}
         </div>
-        <motion.div className="mt-12" initial={{opacity:0,y:15}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay:0.4}}>
-          <a href="#contato" onClick={(e)=>{e.preventDefault();document.querySelector("#contato")?.scrollIntoView({behavior:"smooth"})}}
-            className="inline-flex px-10 py-4 text-[12px] font-bold tracking-[0.12em] uppercase bg-[#0A3C6E] text-white hover:brightness-125 rounded-sm transition-all duration-300 shadow-[0_4px_20px_rgba(10,60,110,0.4)]">
+        <motion.div className="mt-8 sm:mt-12" initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3, duration: 0.4 }}>
+          <a href="#contato" onClick={(e) => { e.preventDefault(); document.querySelector("#contato")?.scrollIntoView({ behavior: "smooth" }); }}
+            className="inline-flex px-8 sm:px-10 py-3.5 sm:py-4 text-[11px] sm:text-[12px] font-bold tracking-[0.12em] uppercase bg-[#0A3C6E] text-white active:brightness-90 hover:brightness-125 rounded-sm transition-all duration-300 shadow-[0_4px_20px_rgba(10,60,110,0.4)]">
             Fale com a gente
           </a>
         </motion.div>
