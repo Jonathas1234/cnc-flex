@@ -82,7 +82,7 @@ export function Equipamentos() {
               style={{boxShadow:"0 4px 24px rgba(0,0,0,0.04), 0 1px 0 rgba(255,255,255,0.8) inset"}}
               onClick={()=>setSelected(p)}>
               <div className="relative aspect-[4/3] overflow-hidden bg-white p-4">
-                <img src={p.image} alt={p.name} className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105" style={{mixBlendMode:"multiply"}} loading="lazy"/>
+                <img src={p.image} alt={p.name} className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105" style={{mixBlendMode:"multiply", filter:"brightness(1.15) contrast(1.05)"}} loading="lazy"/>
                 {p.badge && <div className="absolute top-3 left-3 px-3 py-1 text-[9px] font-bold tracking-[0.15em] uppercase text-white rounded-lg backdrop-blur-sm shadow-lg" style={{background:`${p.badgeColor}dd`}}>{p.badge}</div>}
               </div>
               <div className="p-6">
