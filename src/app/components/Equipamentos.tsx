@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { ProductModal } from "./ProductModal";
-import { motion, AnimatePresence } from "motion/react";
-import { ArrowRight, Play, Video } from "lucide-react";
+import { motion } from "motion/react";
+import { ArrowRight, Video } from "lucide-react";
 
 export function Equipamentos() {
   const [filter, setFilter] = useState("Todos");
   const [selected, setSelected] = useState<any>(null);
-  const [hovered, setHovered] = useState<any>(null);
   const filters = ["Todos","Joalheria","Dental","Industrial"];
   const produtos = [
     {name:"Alliance",description:"Fresadora CNC para Joalheria",image:"/alliance.jpg",badge:"FLAGSHIP",badgeColor:"#0A3C6E",category:"Joalheria",ytId:"cnc1YNbOMjM",
@@ -36,7 +35,6 @@ export function Equipamentos() {
   ];
 
   const list = filter==="Todos"?produtos:produtos.filter(p=>p.category===filter);
-  const preview = hovered ?? list[0];
 
   return (
     <section className="py-28 bg-[#f7f8fa] overflow-hidden" id="produtos">
@@ -76,108 +74,36 @@ export function Equipamentos() {
           </motion.div>
         </div>
 
-        {/* Main content: filelist + preview */}
-        <div className="grid lg:grid-cols-[1fr_360px] gap-10 items-start">
+        {/* Icon grid — estilo Mazak */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-6 gap-y-10">
+          {list.map((p, i) => (
+            <motion.div
+              key={p.name + filter}
+              initial={{opacity:0,y:20}} whileInView={{opacity:1,y:0}} viewport={{once:true}}
+              transition={{duration:0.4, delay:i*0.05}}
+              className="group flex flex-col items-center text-center cursor-pointer"
+              onClick={()=>setSelected(p)}>
 
-          {/* Product filelist */}
-          <div className="divide-y divide-[#0A3C6E]/10">
-            {list.map((p, i) => (
-              <motion.div
-                key={p.name + filter}
-                initial={{opacity:0,x:-16}} whileInView={{opacity:1,x:0}} viewport={{once:true}}
-                transition={{duration:0.4, delay:i*0.05}}
-                className="group flex items-center justify-between py-5 cursor-pointer"
-                onMouseEnter={()=>setHovered(p)}
-                onMouseLeave={()=>setHovered(null)}
-                onClick={()=>setSelected(p)}>
-                <div className="flex items-center gap-5">
-                  <span className="text-[11px] font-mono font-medium text-[#0A3C6E]/40 w-6 shrink-0 group-hover:text-[#F38104]/60 transition-colors duration-300">
-                    {String(i+1).padStart(2,"0")}
-                  </span>
-                  <div className="flex flex-col gap-0.5">
-                    <span className="text-xl sm:text-2xl font-bold text-[#0A3C6E] group-hover:text-[#F38104] transition-colors duration-300 translate-x-0 group-hover:translate-x-2 inline-block transition-transform">
-                      {p.name}
-                    </span>
-                    <span className="text-[12px] text-[#0f1419]/55 group-hover:text-[#0f1419]/75 transition-colors duration-300">
-                      {p.description}
-                    </span>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3 shrink-0 ml-4">
-                  {(p as any).ytId && (
-                    <span className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 text-[9px] font-bold tracking-[0.1em] uppercase text-[#F38104] border border-[#F38104]/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <Play size={7} className="fill-[#F38104]"/>Vídeo
-                    </span>
-                  )}
-                  <ArrowRight
-                    size={18}
-                    className="text-[#0A3C6E]/30 group-hover:text-[#F38104] group-hover:translate-x-1 transition-all duration-300"/>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+              {/* Machine image — clean PNG, pull-in on hover */}
+              <div className="w-full flex items-end justify-center mb-4" style={{height:"140px"}}>
+                <img
+                  src={p.image}
+                  alt={p.name}
+                  className="max-h-full w-auto object-contain transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2 drop-shadow-sm group-hover:drop-shadow-md"
+                  loading="lazy"/>
+              </div>
 
-          {/* Preview panel — desktop only */}
-          <div className="hidden lg:block sticky top-24">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={preview?.name}
-                initial={{opacity:0,y:8}} animate={{opacity:1,y:0}} exit={{opacity:0,y:-8}}
-                transition={{duration:0.25}}
-                className="bg-white/65 backdrop-blur-xl border border-white/70 rounded-2xl overflow-hidden shadow-[0_8px_40px_rgba(10,60,110,0.1)]">
+              {/* Name */}
+              <p className="text-[14px] font-semibold text-[#0A3C6E] group-hover:text-[#F38104] transition-colors duration-300 leading-snug mb-2 px-1">
+                {p.name}
+              </p>
 
-                {/* Image */}
-                <div className="relative bg-white/40 p-6 aspect-[4/3] flex items-center justify-center">
-                  <img
-                    src={preview?.image}
-                    alt={preview?.name}
-                    className="w-full h-full object-contain"
-                    loading="lazy"/>
-                  {preview?.badge && (
-                    <div className="absolute top-3 left-3 px-3 py-1 text-[9px] font-bold tracking-[0.15em] uppercase text-white rounded-lg"
-                      style={{background:`${preview.badgeColor}dd`}}>
-                      {preview.badge}
-                    </div>
-                  )}
-                </div>
-
-                {/* Video thumbnail (if available) */}
-                {(preview as any)?.ytId && (
-                  <a href="#videos"
-                    className="block relative overflow-hidden cursor-pointer group/vid border-t border-white/60">
-                    <img
-                      src={`https://img.youtube.com/vi/${(preview as any).ytId}/mqdefault.jpg`}
-                      alt="Vídeo"
-                      className="w-full h-[110px] object-cover group-hover/vid:scale-105 transition-transform duration-500"/>
-                    <div className="absolute inset-0 bg-[#0A3C6E]/50 flex items-center justify-center gap-2 group-hover/vid:bg-[#0A3C6E]/40 transition-colors">
-                      <div className="w-10 h-10 rounded-full bg-[#F38104] flex items-center justify-center shadow-xl group-hover/vid:scale-110 transition-transform">
-                        <Play size={14} className="text-white ml-0.5 fill-white"/>
-                      </div>
-                      <span className="text-white text-[11px] font-bold tracking-wider uppercase">Assistir vídeo</span>
-                    </div>
-                  </a>
-                )}
-
-                {/* Info */}
-                <div className="p-5">
-                  <h3 className="text-lg font-bold text-[#0A3C6E] mb-1">{preview?.name}</h3>
-                  <p className="text-[13px] text-[#0f1419]/70 mb-4">{preview?.description}</p>
-                  <div className="flex gap-2">
-                    <button
-                      onClick={()=>setSelected(preview)}
-                      className="flex-1 py-2.5 text-[10px] font-bold tracking-[0.12em] uppercase bg-[#0A3C6E] text-white rounded-lg hover:brightness-110 active:brightness-90 transition-all shadow-[0_4px_12px_rgba(10,60,110,0.2)]">
-                      Ver Detalhes
-                    </button>
-                    <a href={`https://wa.me/5511938023558?text=${encodeURIComponent(`Olá! Gostaria de um orçamento para a máquina ${preview?.name}`)}`}
-                      target="_blank" rel="noopener noreferrer"
-                      className="flex-1 py-2.5 text-[10px] font-bold tracking-[0.12em] uppercase text-center bg-[#F38104] text-white rounded-lg hover:brightness-110 active:brightness-90 transition-all shadow-[0_4px_12px_rgba(243,129,4,0.2)]">
-                      Solicitar
-                    </a>
-                  </div>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
+              {/* Arrow circle */}
+              <div className="w-7 h-7 rounded-full border-2 border-[#0A3C6E]/25 group-hover:border-[#F38104] flex items-center justify-center transition-colors duration-300">
+                <ArrowRight size={12} className="text-[#0A3C6E]/40 group-hover:text-[#F38104] transition-colors duration-300"/>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
 
