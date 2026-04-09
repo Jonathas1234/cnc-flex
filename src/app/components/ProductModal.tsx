@@ -75,7 +75,7 @@ export function ProductModal({isOpen,onClose,product}:ProductModalProps) {
                 ) : (
                   <motion.div key="image" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} transition={{duration:0.2}}
                     className="relative w-full flex items-center justify-center">
-                    <img src={product.image} alt={product.name} className="w-full h-auto max-h-[40vh] sm:max-h-[60vh] object-contain" loading="lazy"/>
+                    <img src={product.image} alt={product.name} className="w-full h-auto max-h-[40vh] sm:max-h-[60vh] object-contain" style={{mixBlendMode:"multiply"}} loading="lazy"/>
                     {/* Play overlay button if video available and not showing video */}
                     {product.ytId && (
                       <button onClick={()=>setShowVideo(true)}
