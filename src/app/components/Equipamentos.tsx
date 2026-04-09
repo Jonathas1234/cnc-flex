@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ProductModal } from "./ProductModal";
 import { motion } from "motion/react";
-import { ArrowRight, Video } from "lucide-react";
+import { Video } from "lucide-react";
 
 export function Equipamentos() {
   const [filter, setFilter] = useState("Todos");
@@ -74,33 +74,28 @@ export function Equipamentos() {
           </motion.div>
         </div>
 
-        {/* Icon grid — estilo Mazak */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-6 gap-y-10">
-          {list.map((p, i) => (
-            <motion.div
-              key={p.name + filter}
-              initial={{opacity:0,y:20}} whileInView={{opacity:1,y:0}} viewport={{once:true}}
-              transition={{duration:0.4, delay:i*0.05}}
-              className="group flex flex-col items-center text-center cursor-pointer"
+        {/* Cards grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {list.map((p,i)=>(
+            <motion.div key={p.name+filter} initial={{opacity:0,y:30}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{duration:0.5,delay:i*0.06}}
+              className="group bg-white/60 backdrop-blur-lg border border-white/70 hover:bg-white/80 hover:shadow-[0_12px_40px_rgba(10,60,110,0.1)] overflow-hidden cursor-pointer transition-all duration-700 rounded-xl"
+              style={{boxShadow:"0 4px 24px rgba(0,0,0,0.04), 0 1px 0 rgba(255,255,255,0.8) inset"}}
               onClick={()=>setSelected(p)}>
-
-              {/* Machine image — clean PNG, pull-in on hover */}
-              <div className="w-full flex items-end justify-center mb-4" style={{height:"140px"}}>
-                <img
-                  src={p.image}
-                  alt={p.name}
-                  className="max-h-full w-auto object-contain transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2 drop-shadow-sm group-hover:drop-shadow-md"
-                  loading="lazy"/>
+              <div className="relative aspect-[4/3] overflow-hidden bg-white/40 p-4">
+                <img src={p.image} alt={p.name} className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105" loading="lazy"/>
+                {p.badge && <div className="absolute top-3 left-3 px-3 py-1 text-[9px] font-bold tracking-[0.15em] uppercase text-white rounded-lg backdrop-blur-sm shadow-lg" style={{background:`${p.badgeColor}dd`}}>{p.badge}</div>}
               </div>
-
-              {/* Name */}
-              <p className="text-[14px] font-semibold text-[#0A3C6E] group-hover:text-[#F38104] transition-colors duration-300 leading-snug mb-2 px-1">
-                {p.name}
-              </p>
-
-              {/* Arrow circle */}
-              <div className="w-7 h-7 rounded-full border-2 border-[#0A3C6E]/25 group-hover:border-[#F38104] flex items-center justify-center transition-colors duration-300">
-                <ArrowRight size={12} className="text-[#0A3C6E]/40 group-hover:text-[#F38104] transition-colors duration-300"/>
+              <div className="p-6">
+                <h3 className="text-lg font-bold text-[#0A3C6E] mb-1 group-hover:text-[#F38104] transition-colors duration-500">{p.name}</h3>
+                <p className="text-[13px] text-[#0f1419]/70 mb-5">{p.description}</p>
+                <div className="space-y-2 mb-6">
+                  {p.specs.map((s,j)=>(<div key={j} className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{background:j%2===0?"#0A3C6E":"#F38104"}}/><span className="text-[13px] text-[#0f1419]/70">{s}</span></div>))}
+                </div>
+                <div className="flex gap-2">
+                  <button onClick={(e)=>{e.stopPropagation();setSelected(p)}} className="flex-1 py-2.5 text-[10px] font-bold tracking-[0.12em] uppercase border border-[#0A3C6E]/15 text-[#0A3C6E] hover:bg-[#0A3C6E]/5 rounded-lg transition-all">Detalhes</button>
+                  <a href={`https://wa.me/5511938023558?text=${encodeURIComponent(`Olá! Gostaria de um orçamento para a máquina ${p.name}`)}`} target="_blank" rel="noopener noreferrer" onClick={e=>e.stopPropagation()}
+                    className="flex-1 py-2.5 text-[10px] font-bold tracking-[0.12em] uppercase text-center bg-[#F38104] text-white hover:brightness-110 rounded-lg transition-all shadow-[0_4px_12px_rgba(243,129,4,0.25)]">Solicitar</a>
+                </div>
               </div>
             </motion.div>
           ))}
