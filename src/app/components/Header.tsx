@@ -37,7 +37,7 @@ export function Header() {
 
       <div className="max-w-7xl mx-auto px-5 sm:px-8 h-[64px] sm:h-[72px] flex items-center justify-between">
         <a href="#inicio" onClick={(e)=>{e.preventDefault();go("#inicio")}} className="select-none flex items-center gap-3">
-          <img src="/logo-cncflex.png" alt="CNC Flex" className={"h-11 sm:h-14 w-auto transition-all duration-500 " + (scrolled ? "" : "brightness-0 invert")} />
+          <img src="/logo-cncflex.png" alt="CNC Flex" className={"h-13 sm:h-16 w-auto transition-all duration-500 " + (scrolled ? "" : "brightness-0 invert")} />
         </a>
 
         <nav className="hidden lg:flex items-center gap-8">
@@ -68,7 +68,7 @@ export function Header() {
             initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} transition={{duration:0.25}}>
             <div className="absolute top-0 left-0 right-0 h-[3px]" style={{background:"linear-gradient(90deg, #F38104 0%, #ffb347 50%, #F38104 100%)"}}/>
             <div className="flex items-center justify-between px-5 h-[64px]">
-              <img src="/logo-cncflex.png" alt="CNC Flex" className="h-11 w-auto brightness-0 invert" />
+              <img src="/logo-cncflex.png" alt="CNC Flex" className="h-13 w-auto brightness-0 invert" />
               <button onClick={()=>setOpen(false)} className="text-white/70 p-1" aria-label="Fechar"><X size={22}/></button>
             </div>
             <nav className="flex flex-col px-5 mt-4 gap-1">
