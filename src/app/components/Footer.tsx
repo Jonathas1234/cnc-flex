@@ -10,7 +10,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8 py-20">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
           <div>
-            <div className="mb-6"><img src="/logo-cncflex.png" alt="CNC Flex" className="h-12 w-auto brightness-0 invert" /></div>
+            <div className="mb-6"><img src="/logo-cncflex.png" alt="CNC Flex" className="h-16 w-auto brightness-0 invert" /></div>
             <p className="text-[14px] text-white/70 leading-relaxed mb-6">Mais de 20 anos em usinagem de precisão com tecnologia 100% nacional.</p>
             <div className="flex gap-2">
               {[
